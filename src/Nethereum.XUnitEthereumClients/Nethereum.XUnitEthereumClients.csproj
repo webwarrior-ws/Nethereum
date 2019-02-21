@@ -3,10 +3,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-  <ProjectReference Include="..\Nethereum.Web3\Nethereum.Web3.csproj" />
+    <ProjectReference Include="..\Nethereum.Accounts\Nethereum.Accounts.csproj" />
+    <ProjectReference Include="..\Nethereum.RPC\Nethereum.RPC.csproj" />
+    <ProjectReference Include="..\Nethereum.Signer\Nethereum.Signer.csproj" />
+    <ProjectReference Include="..\Nethereum.Web3\Nethereum.Web3.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="JsonRpcSharp" Version="0.9.54719" />
+    <PackageReference Include="Newtonsoft.Json" Version="[10.0.3,12)" />
     <PackageReference Include="xunit" Version="2.3.1" />
   </ItemGroup>
 </Project>
