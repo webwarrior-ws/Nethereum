@@ -22,7 +22,7 @@
     <PackageReference Include="Ledger.Net" Version="2.0.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 </Project>

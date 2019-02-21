@@ -5,7 +5,7 @@
     <Copyright>Juan Blanco</Copyright>
     <AssemblyTitle>Nethereum.ENS</AssemblyTitle>
     <VersionPrefix>$(NethereumVersion)</VersionPrefix>
-    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
     <AssemblyName>Nethereum.ENS</AssemblyName>
     <PackageId>Nethereum.ENS</PackageId>
   </PropertyGroup>
@@ -20,11 +20,11 @@
     </PackageReference>
   </ItemGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet461AOT)' != 'true'">
+  <PropertyGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet46AOT)' != 'true'">
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\NethereumKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet461AOT)' != 'true'">
+  <ItemGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet46AOT)' != 'true'">
     <None Include="..\..\NethereumKey.snk" />
   </ItemGroup>
 

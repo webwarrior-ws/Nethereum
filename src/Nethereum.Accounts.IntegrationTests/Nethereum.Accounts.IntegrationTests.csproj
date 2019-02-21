@@ -5,7 +5,7 @@
     <Authors>Juan Blanco</Authors>
     <TargetFrameworks>netcoreapp2.0;netcoreapp2.1</TargetFrameworks>
   </PropertyGroup> 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
     <Reference Include="System.Numerics" />
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />

@@ -3,14 +3,14 @@
   <PropertyGroup>
     <Description>Nethereum.Web3.IntegrationTests </Description>
     <Authors>Juan Blanco</Authors>
-    <TargetFrameworks>netcoreapp2.0;net461;netcoreapp2.1</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.0;net46;netcoreapp2.1</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Nethereum.Web3\Nethereum.Web3.csproj" />
     </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
     <Reference Include="System.Numerics" />
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />

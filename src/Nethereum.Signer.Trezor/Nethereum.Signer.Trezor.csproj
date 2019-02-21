@@ -22,7 +22,7 @@
     <PackageReference Include="Trezor.Net" Version="2.4.0" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' Or '$(TargetFramework)' == 'net461'">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' Or '$(TargetFramework)' == 'net46'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 </Project>

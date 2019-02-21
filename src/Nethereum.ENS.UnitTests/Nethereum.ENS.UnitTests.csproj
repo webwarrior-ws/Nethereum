@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Nethereum.ENS.UnitTests Class Library</Description>
     <Authors>Juan Blanco</Authors>
-     <TargetFrameworks>netcoreapp2.0;net461;netcoreapp2.1</TargetFrameworks>
+     <TargetFrameworks>netcoreapp2.0;net46;netcoreapp2.1</TargetFrameworks>
     <AssemblyName>Nethereum.ENS.UnitTests</AssemblyName>
     <PackageId>Nethereum.ENS.UnitTests</PackageId>
   </PropertyGroup>
