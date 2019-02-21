@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Nethereum.Hex\Nethereum.Hex.csproj" />
-    <ProjectReference Include="..\Nethereum.JsonRpc.Client\Nethereum.JsonRpc.Client.csproj" />
     <ProjectReference Include="..\Nethereum.Util\Nethereum.Util.csproj" />
   </ItemGroup>
 
@@ -25,6 +24,10 @@
   </PropertyGroup>
   <ItemGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet461AOT)' != 'true'">
     <None Include="..\..\NethereumKey.snk" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != 'net35'">
+    <PackageReference Include="JsonRpcSharp" Version="0.9.54719">
+    </PackageReference>
   </ItemGroup>
 
 

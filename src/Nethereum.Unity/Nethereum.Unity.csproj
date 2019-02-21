@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Nethereum.Contracts\Nethereum.Contracts.csproj" />
     <ProjectReference Include="..\Nethereum.RPC\Nethereum.RPC.csproj" />
-    <ProjectReference Include="..\Nethereum.JsonRpc.Client\Nethereum.JsonRpc.Client.csproj" />
     <ProjectReference Include="..\Nethereum.Hex\Nethereum.Hex.csproj" />
     <ProjectReference Include="..\Nethereum.Signer\Nethereum.Signer.csproj" />
   </ItemGroup>
@@ -25,6 +24,12 @@
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+    <PackageReference Include="JsonRpcSharp">
+      <Version>0.9.54719</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

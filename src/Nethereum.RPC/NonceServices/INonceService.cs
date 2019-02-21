@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 
 namespace Nethereum.RPC.NonceServices
 {

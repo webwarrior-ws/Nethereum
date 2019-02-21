@@ -1,5 +1,5 @@
 using Nethereum.Hex.HexTypes;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Infrastructure;
 
 namespace Nethereum.RPC.Eth

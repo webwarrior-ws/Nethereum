@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
  
 using Nethereum.Hex.HexConvertors.Extensions;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Newtonsoft.Json.Linq;
 
 namespace Nethereum.RPC.Eth.Compilation

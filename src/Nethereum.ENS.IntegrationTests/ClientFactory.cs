@@ -1,5 +1,5 @@
 ﻿using System;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 
 namespace Nethereum.ENS.IntegrationTests
 {

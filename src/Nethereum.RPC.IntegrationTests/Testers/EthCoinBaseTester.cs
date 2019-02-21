@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth;
 using Nethereum.RPC.Eth.Compilation;
 using Newtonsoft.Json.Linq;

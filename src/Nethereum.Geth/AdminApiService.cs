@@ -1,5 +1,5 @@
 using Nethereum.Geth.RPC.Admin;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC;
 
 namespace Nethereum.Geth

@@ -4,7 +4,7 @@ using Nethereum.Contracts.CQS;
 using Nethereum.Contracts.DeploymentHandlers;
 using Nethereum.Contracts.Extensions;
 using Nethereum.Hex.HexTypes;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Accounts;
 using Nethereum.RPC.Eth.DTOs;
 using Nethereum.RPC.TransactionManagers;

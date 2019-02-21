@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
  
 using Nethereum.Hex.HexConvertors.Extensions;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 
 namespace Nethereum.RPC.Eth.Transactions
 {

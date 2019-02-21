@@ -1,4 +1,4 @@
-﻿using Nethereum.JsonRpc.Client;
+﻿using JsonRpcSharp.Client;
 using Nethereum.Parity.RPC.Trace;
 using Nethereum.RPC;
 

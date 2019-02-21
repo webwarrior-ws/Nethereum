@@ -1,5 +1,5 @@
 ﻿using Nethereum.Contracts.MessageEncodingServices;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth.DTOs;
 using Nethereum.RPC.Eth.Transactions;
 

@@ -1,4 +1,4 @@
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.Parity.RPC.Accounts;
 using Nethereum.RPC;
 

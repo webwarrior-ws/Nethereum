@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Nethereum.Contracts.Extensions;
 using Nethereum.Hex.HexTypes;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth.DTOs;
 using Newtonsoft.Json.Linq;
 

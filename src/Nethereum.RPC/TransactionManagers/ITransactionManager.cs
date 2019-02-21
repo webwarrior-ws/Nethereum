@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth.DTOs;
 using System.Numerics;
 using System.Threading;

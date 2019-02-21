@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Headers;
 using Common.Logging;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Accounts;
 
 namespace Nethereum.Geth

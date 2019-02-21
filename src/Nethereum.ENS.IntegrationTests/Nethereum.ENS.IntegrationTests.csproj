@@ -14,7 +14,6 @@
     <ProjectReference Include="..\Nethereum.Geth\Nethereum.Geth.csproj" />
     <ProjectReference Include="..\Nethereum.Util\Nethereum.Util.csproj" />
     <ProjectReference Include="..\Nethereum.Contracts\Nethereum.Contracts.csproj" />
-    <ProjectReference Include="..\Nethereum.JsonRpc.IpcClient\Nethereum.JsonRpc.IpcClient.csproj" />
     <ProjectReference Include="..\Nethereum.XUnitEthereumClients\Nethereum.XUnitEthereumClients.csproj" />
   </ItemGroup>
 
@@ -27,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="JsonRpcSharp" Version="0.9.54719" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />

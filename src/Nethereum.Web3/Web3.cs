@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using Common.Logging;
 using Nethereum.Contracts;
 using Nethereum.Contracts.Services;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC;
 using Nethereum.RPC.Accounts;
 using Nethereum.RPC.TransactionManagers;

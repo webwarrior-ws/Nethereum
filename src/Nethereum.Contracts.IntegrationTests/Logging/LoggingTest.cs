@@ -5,7 +5,7 @@ using System.Text;
 using Common.Logging;
 using Common.Logging.Simple;
 using Nethereum.Hex.HexTypes;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.XUnitEthereumClients;
 using Xunit;
 

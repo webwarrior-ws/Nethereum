@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 
 namespace Nethereum.Geth.RPC.Admin
 {

@@ -24,10 +24,10 @@
         <dependencies>
             <group targetFramework="net4.6">
                 <dependency id="BouncyCastle" version="1.8.2" exclude="Build,Analyzers" />
-                <dependency id="JsonRpcSharp" version="0.9.54716" exclude="Build,Analyzers" />
+                <dependency id="JsonRpcSharp" version="0.9.54719" exclude="Build,Analyzers" />
             </group>
             <group targetFramework="netstandard2.0">
-                <dependency id="JsonRpcSharp" version="0.9.54716" exclude="Build,Analyzers" />
+                <dependency id="JsonRpcSharp" version="0.9.54719" exclude="Build,Analyzers" />
             </group>
         </dependencies>
     </metadata>
@@ -37,8 +37,6 @@
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\net451\Nethereum.Accounts.dll" target="lib\net46" />
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\net451\Nethereum.Contracts.dll" target="lib\net46" />
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\net451\Nethereum.Hex.dll" target="lib\net46" />
-        <file src="src\Nethereum.StandardTokenEIP20\bin\Release\net451\Nethereum.JsonRpc.Client.dll" target="lib\net46" />
-        <file src="src\Nethereum.StandardTokenEIP20\bin\Release\net451\Nethereum.JsonRpc.RpcClient.dll" target="lib\net46" />
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\net451\Nethereum.KeyStore.dll" target="lib\net46" />
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\net451\Nethereum.RLP.dll" target="lib\net451" />
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\net451\Nethereum.RPC.dll" target="lib\net46" />
@@ -52,8 +50,6 @@
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\netstandard2.0\Nethereum.Accounts.dll" target="lib\netstandard2.0" />
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\netstandard2.0\Nethereum.Contracts.dll" target="lib\netstandard2.0" />
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\netstandard2.0\Nethereum.Hex.dll" target="lib\netstandard2.0" />
-        <file src="src\Nethereum.StandardTokenEIP20\bin\Release\netstandard2.0\Nethereum.JsonRpc.Client.dll" target="lib\netstandard2.0" />
-        <file src="src\Nethereum.StandardTokenEIP20\bin\Release\netstandard2.0\Nethereum.JsonRpc.RpcClient.dll" target="lib\netstandard2.0" />
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\netstandard2.0\Nethereum.KeyStore.dll" target="lib\netstandard2.0" />
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\netstandard2.0\Nethereum.RLP.dll" target="lib\netstandard2.0" />
         <file src="src\Nethereum.StandardTokenEIP20\bin\Release\netstandard2.0\Nethereum.RPC.dll" target="lib\netstandard2.0" />

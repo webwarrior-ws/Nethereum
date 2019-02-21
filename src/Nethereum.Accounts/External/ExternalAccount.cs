@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 using System.Threading.Tasks;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Accounts;
 using Nethereum.RPC.NonceServices;
 using Nethereum.RPC.TransactionManagers;

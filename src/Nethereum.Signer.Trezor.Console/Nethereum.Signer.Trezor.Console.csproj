@@ -6,7 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Nethereum.JsonRpc.RpcClient\Nethereum.JsonRpc.RpcClient.csproj" />
+    <PackageReference Include="JsonRpcSharp" Version="0.9.54719" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Nethereum.Signer.Trezor\Nethereum.Signer.Trezor.csproj" />
     <ProjectReference Include="..\Nethereum.Web3\Nethereum.Web3.csproj" />
   </ItemGroup>

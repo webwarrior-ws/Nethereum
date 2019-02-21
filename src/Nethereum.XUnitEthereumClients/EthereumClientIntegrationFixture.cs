@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.Web3.Accounts;
 using Nethereum.Web3.Accounts.Managed;
 

@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
  
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 
 namespace Nethereum.RPC.Personal
 {

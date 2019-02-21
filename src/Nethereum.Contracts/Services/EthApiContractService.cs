@@ -2,7 +2,7 @@ using System;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts.ContractHandlers;
 using Nethereum.Contracts.CQS;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC;
 using Nethereum.RPC.TransactionManagers;
 

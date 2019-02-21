@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
  
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth.DTOs;
 
 namespace Nethereum.RPC.Personal

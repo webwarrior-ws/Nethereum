@@ -7,7 +7,7 @@ using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts;
 using Nethereum.Contracts.Extensions;
 using Nethereum.Hex.HexConvertors.Extensions;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.Signer.Crypto;
 using Nethereum.Web3.Accounts;
 

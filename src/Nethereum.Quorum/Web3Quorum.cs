@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Common.Logging;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.Quorum.RPC.Interceptors;
 using Nethereum.Quorum.RPC.Services;
 

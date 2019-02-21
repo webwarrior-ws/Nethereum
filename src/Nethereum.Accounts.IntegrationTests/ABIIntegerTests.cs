@@ -6,7 +6,7 @@ using Nethereum.ABI;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts;
 using Nethereum.Contracts.CQS;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.XUnitEthereumClients;
 using Xunit;
 using static Nethereum.Accounts.IntegrationTests.ABIIntegerTests;

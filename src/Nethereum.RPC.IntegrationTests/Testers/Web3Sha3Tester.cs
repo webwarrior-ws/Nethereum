@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Web3;
 
 namespace Nethereum.RPC.Tests.Testers

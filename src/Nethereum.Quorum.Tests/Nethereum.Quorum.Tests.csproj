@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
-    <ProjectReference Include="..\Nethereum.JsonRpc.IpcClient\Nethereum.JsonRpc.IpcClient.csproj" />
+    <PackageReference Include="JsonRpcSharp" Version="0.9.54719" />
     <Reference Include="System.Numerics" />
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />

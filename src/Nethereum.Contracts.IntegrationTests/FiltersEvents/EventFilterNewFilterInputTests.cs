@@ -3,7 +3,7 @@ using System.Numerics;
 using System.Threading.Tasks;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts.IntegrationTests.CQS;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.XUnitEthereumClients;
 using Xunit;
 

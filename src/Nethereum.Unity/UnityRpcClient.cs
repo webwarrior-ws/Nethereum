@@ -1,13 +1,13 @@
 using System;
 using System.Text;
 using Nethereum.Unity.RpcModel;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Newtonsoft.Json;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-using RpcError = Nethereum.JsonRpc.Client.RpcError;
-using RpcRequest = Nethereum.JsonRpc.Client.RpcRequest;
+using RpcError = JsonRpcSharp.Client.RpcError;
+using RpcRequest = JsonRpcSharp.Client.RpcRequest;
 using Nethereum.RPC.Eth.Transactions;
 
 

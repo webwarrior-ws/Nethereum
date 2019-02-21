@@ -1,4 +1,4 @@
-﻿using Nethereum.JsonRpc.Client;
+﻿using JsonRpcSharp.Client;
 using Nethereum.Quorum.RPC.DTOs;
 using Nethereum.RPC.Infrastructure;
 

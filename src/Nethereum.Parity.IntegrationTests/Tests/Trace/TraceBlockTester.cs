@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.Parity.RPC.Trace;
 using Nethereum.Web3.Accounts;
 using Newtonsoft.Json.Linq;

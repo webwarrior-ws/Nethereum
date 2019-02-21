@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Nethereum.ABI.FunctionEncoding;
 using Nethereum.ABI.Model;
 using Nethereum.Geth.RPC.Miner;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth.DTOs;
 using Nethereum.RPC.Eth.Transactions;
 using Nethereum.RPC.Personal;

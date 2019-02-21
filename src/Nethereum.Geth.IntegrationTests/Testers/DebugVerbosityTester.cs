@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Nethereum.Geth.RPC.Debug;
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Tests.Testers;
 using Xunit;
 

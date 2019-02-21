@@ -1,4 +1,4 @@
-using Nethereum.JsonRpc.Client;
+using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth.Blocks;
 
 namespace Nethereum.RPC.Eth.Services
