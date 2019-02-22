@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
 using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth.DTOs;
+using System.Threading;
 
 namespace Nethereum.RPC.Eth.Blocks
 {
@@ -84,16 +85,20 @@ namespace Nethereum.RPC.Eth.Blocks
         {
         }
 
-        public Task<BlockWithTransactions> SendRequestAsync(BlockParameter blockParameter, object id = null)
+        public Task<BlockWithTransactions> SendRequestAsync(BlockParameter blockParameter,
+                                                            object id = null,
+                                                            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (blockParameter == null) throw new ArgumentNullException(nameof(blockParameter));
-            return base.SendRequestAsync(id, blockParameter, true);
+            return base.SendRequestAsync(id, cancellationToken, blockParameter, true);
         }
 
-        public Task<BlockWithTransactions> SendRequestAsync(HexBigInteger number, object id = null)
+        public Task<BlockWithTransactions> SendRequestAsync(HexBigInteger number,
+                                                            object id = null,
+                                                            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (number == null) throw new ArgumentNullException(nameof(number));
-            return base.SendRequestAsync(id, number, true);
+            return base.SendRequestAsync(id, cancellationToken, number, true);
         }
 
         public RpcRequest BuildRequest(HexBigInteger number, object id = null)

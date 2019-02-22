@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
 using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth.DTOs;
+using System.Threading;
 
 namespace Nethereum.RPC.Eth.Transactions
 {
@@ -31,10 +32,12 @@ namespace Nethereum.RPC.Eth.Transactions
         {
         }
 
-        public Task<HexBigInteger> SendRequestAsync(CallInput callInput, object id = null)
+        public Task<HexBigInteger> SendRequestAsync(CallInput callInput,
+                                                    object id = null,
+                                                    CancellationToken cancellationToken = default(CancellationToken))
         {
             if (callInput == null) throw new ArgumentNullException(nameof(callInput));
-            return SendRequestAsync(id, callInput);
+            return SendRequestAsync(id, cancellationToken, callInput);
         }
 
         public RpcRequest BuildRequest(CallInput callInput, object id = null)

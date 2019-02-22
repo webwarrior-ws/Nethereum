@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using JsonRpcSharp.Client;
 using Newtonsoft.Json.Linq;
 using Nethereum.Hex.HexConvertors.Extensions;
+using System.Threading;
 
 namespace Nethereum.RPC.Eth.Compilation
 {
@@ -67,10 +68,12 @@ namespace Nethereum.RPC.Eth.Compilation
         {
         }
 
-        public Task<JToken> SendRequestAsync(string contractCode, object id = null)
+        public Task<JToken> SendRequestAsync(string contractCode,
+                                             object id = null,
+                                             CancellationToken cancellationToken = default(CancellationToken))
         {
             if (contractCode == null) throw new ArgumentNullException(nameof(contractCode));
-            return base.SendRequestAsync(id, contractCode);
+            return base.SendRequestAsync(id, cancellationToken, contractCode);
         }
 
         public RpcRequest BuildRequest(string contractCode, object id = null)

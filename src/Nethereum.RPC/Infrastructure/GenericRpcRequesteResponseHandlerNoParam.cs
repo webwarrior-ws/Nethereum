@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using JsonRpcSharp.Client;
 
 namespace Nethereum.RPC.Infrastructure
@@ -9,9 +10,10 @@ namespace Nethereum.RPC.Infrastructure
         {
         }
 
-        public new Task<TResponse> SendRequestAsync(object id = null)
+        public new Task<TResponse> SendRequestAsync(object id = null,
+                                                    CancellationToken cancellationToken = default(CancellationToken))
         {
-            return base.SendRequestAsync(id);
+            return base.SendRequestAsync(id, cancellationToken);
         }
     }
 }

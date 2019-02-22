@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
 using JsonRpcSharp.Client;
+using System.Threading;
 
 namespace Nethereum.Geth.RPC.Miner
 {
@@ -21,10 +22,11 @@ namespace Nethereum.Geth.RPC.Miner
             return base.BuildRequest(id, price);
         }
 
-        public Task<bool> SendRequestAsync(HexBigInteger price, object id = null)
+        public Task<bool> SendRequestAsync(HexBigInteger price, object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
             if (price == null) throw new ArgumentNullException(nameof(price));
-            return base.SendRequestAsync(id, price);
+            return base.SendRequestAsync(id, cancellationToken, price);
         }
     }
 }

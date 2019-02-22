@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Nethereum.Geth.RPC.Debug.DTOs;
 using JsonRpcSharp.Client;
 using Newtonsoft.Json.Linq;
+using System.Threading;
 
 namespace Nethereum.Geth.RPC.Debug
 {
@@ -29,9 +30,10 @@ namespace Nethereum.Geth.RPC.Debug
             return base.BuildRequest(id, txnHash, options);
         }
 
-        public Task<JObject> SendRequestAsync(string txnHash, TraceTransactionOptions options, object id = null)
+        public Task<JObject> SendRequestAsync(string txnHash, TraceTransactionOptions options, object id = null,
+                                              CancellationToken cancellationToken = default(CancellationToken))
         {
-            return base.SendRequestAsync(id, txnHash, options);
+            return base.SendRequestAsync(id, cancellationToken, txnHash, options);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Nethereum.RPC.Eth.DTOs;
 
 namespace Nethereum.Contracts.QueryHandlers
@@ -9,6 +10,7 @@ namespace Nethereum.Contracts.QueryHandlers
         Task<TOutput> QueryAsync(
              string contractAddress,
              TFunctionMessage functionMessage = null,
-             BlockParameter block = null);
+             BlockParameter block = null,
+             CancellationToken cancellationToken = default(CancellationToken));
     }
 }

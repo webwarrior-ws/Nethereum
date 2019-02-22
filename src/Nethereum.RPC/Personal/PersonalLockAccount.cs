@@ -3,6 +3,7 @@ using System.Threading.Tasks;
  
 using Nethereum.Hex.HexConvertors.Extensions;
 using JsonRpcSharp.Client;
+using System.Threading;
 
 namespace Nethereum.RPC.Personal
 {
@@ -15,10 +16,12 @@ namespace Nethereum.RPC.Personal
         {
         }
 
-        public Task<bool> SendRequestAsync(string account, object id = null)
+        public Task<bool> SendRequestAsync(string account,
+                                           object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
             if (account == null) throw new ArgumentNullException(nameof(account));
-            return base.SendRequestAsync(id, account.EnsureHexPrefix());
+            return base.SendRequestAsync(id, cancellationToken, account.EnsureHexPrefix());
         }
 
         public RpcRequest BuildRequest(string account, object id = null)

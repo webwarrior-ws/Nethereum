@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 using JsonRpcSharp.Client;
 
@@ -24,29 +25,34 @@ namespace Nethereum.Geth.RPC.Admin
             return base.BuildRequest(id, host, port, cors, api);
         }
 
-        public Task<bool> SendRequestAsync(string host, int port, string cors, string api, object id = null)
+        public Task<bool> SendRequestAsync(string host, int port, string cors, string api, object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
-            return base.SendRequestAsync(id, host, port, cors, api);
+            return base.SendRequestAsync(id, cancellationToken, host, port, cors, api);
         }
 
-        public Task<bool> SendRequestAsync(string host, int port, string cors, object id = null)
+        public Task<bool> SendRequestAsync(string host, int port, string cors, object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
-            return base.SendRequestAsync(id, host, port, cors);
+            return base.SendRequestAsync(id, cancellationToken, host, port, cors);
         }
 
-        public Task<bool> SendRequestAsync(string host, int port, object id = null)
+        public Task<bool> SendRequestAsync(string host, int port, object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
-            return base.SendRequestAsync(id, host, port);
+            return base.SendRequestAsync(id, cancellationToken, host, port);
         }
 
-        public Task<bool> SendRequestAsync(string host, object id = null)
+        public Task<bool> SendRequestAsync(string host, object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
-            return base.SendRequestAsync(id, host);
+            return base.SendRequestAsync(id, cancellationToken, host);
         }
 
-        public Task<bool> SendRequestAsync(object id = null)
+        public Task<bool> SendRequestAsync(object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
-            return base.SendRequestAsync(id);
+            return base.SendRequestAsync(id, cancellationToken);
         }
     }
 }

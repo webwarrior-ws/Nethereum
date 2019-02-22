@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 using JsonRpcSharp.Client;
 
@@ -19,9 +20,10 @@ namespace Nethereum.Geth.RPC.Debug
             return base.BuildRequest(id, file, seconds);
         }
 
-        public Task<object> SendRequestAsync(string file, long seconds, object id = null)
+        public Task<object> SendRequestAsync(string file, long seconds, object id = null,
+                                             CancellationToken cancellationToken = default(CancellationToken))
         {
-            return base.SendRequestAsync(id, file, seconds);
+            return base.SendRequestAsync(id, cancellationToken, file, seconds);
         }
     }
 }

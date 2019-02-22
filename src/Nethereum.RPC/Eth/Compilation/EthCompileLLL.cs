@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
  
 using Nethereum.Hex.HexConvertors.Extensions;
@@ -36,10 +37,12 @@ namespace Nethereum.RPC.Eth.Compilation
         {
         }
 
-        public Task<JObject> SendRequestAsync(string lllcode, object id = null)
+        public Task<JObject> SendRequestAsync(string lllcode,
+                                              object id = null,
+                                              CancellationToken cancellationToken = default(CancellationToken))
         {
             if (lllcode == null) throw new ArgumentNullException(nameof(lllcode));
-            return base.SendRequestAsync(id, lllcode);
+            return base.SendRequestAsync(id, cancellationToken, lllcode);
         }
 
         public RpcRequest BuildRequest(string lllcode, object id = null)

@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
  
 using JsonRpcSharp.Client;
@@ -28,10 +29,12 @@ namespace Nethereum.RPC.Eth.Filters
         {
         }
 
-        public Task<FilterLog[]> SendRequestAsync(NewFilterInput newFilter, object id = null)
+        public Task<FilterLog[]> SendRequestAsync(NewFilterInput newFilter,
+                                                  object id = null,
+                                                  CancellationToken cancellationToken = default(CancellationToken))
         {
             if (newFilter == null) throw new ArgumentNullException(nameof(newFilter));
-            return base.SendRequestAsync(id, newFilter);
+            return base.SendRequestAsync(id, cancellationToken, newFilter);
         }
 
         public RpcRequest BuildRequest(NewFilterInput newFilter, object id = null)

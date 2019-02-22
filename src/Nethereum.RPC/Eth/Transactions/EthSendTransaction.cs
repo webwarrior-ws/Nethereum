@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
  
 using JsonRpcSharp.Client;
@@ -12,10 +13,12 @@ namespace Nethereum.RPC.Eth.Transactions
         {
         }
 
-        public Task<string> SendRequestAsync(TransactionInput input, object id = null)
+        public Task<string> SendRequestAsync(TransactionInput input,
+                                             object id = null,
+                                             CancellationToken cancellationToken = default(CancellationToken))
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
-            return base.SendRequestAsync(id, input);
+            return base.SendRequestAsync(id, cancellationToken, input);
         }
 
         public RpcRequest BuildRequest(TransactionInput input, object id = null)

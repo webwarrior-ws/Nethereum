@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Nethereum.Hex.HexConvertors.Extensions;
 using JsonRpcSharp.Client;
+using System.Threading;
 
 namespace Nethereum.Quorum.RPC
 {
@@ -11,10 +12,11 @@ namespace Nethereum.Quorum.RPC
         {
         }
 
-        public Task<bool> SendRequestAsync(string address, object id = null)
+        public Task<bool> SendRequestAsync(string address, object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
             if (address == null) throw new ArgumentNullException(nameof(address));
-            return base.SendRequestAsync(id, address.EnsureHexPrefix());
+            return base.SendRequestAsync(id, cancellationToken, address.EnsureHexPrefix());
         }
 
         public RpcRequest BuildRequest(string address, object id = null)

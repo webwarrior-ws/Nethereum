@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
  
 using JsonRpcSharp.Client;
@@ -36,12 +37,15 @@ namespace Nethereum.RPC.Eth.Mining
         {
         }
 
-        public Task<bool> SendRequestAsync(string hashRate, string clientId, object id = null)
+        public Task<bool> SendRequestAsync(string hashRate,
+                                           string clientId,
+                                           object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hashRate == null) throw new ArgumentNullException(nameof(hashRate));
             if (clientId == null) throw new ArgumentNullException(nameof(clientId));
 
-            return base.SendRequestAsync(id, hashRate.EnsureHexPrefix(), clientId.EnsureHexPrefix());
+            return base.SendRequestAsync(id, cancellationToken, hashRate.EnsureHexPrefix(), clientId.EnsureHexPrefix());
         }
 
         public RpcRequest BuildRequest(string hashRate, string clientId, object id = null)

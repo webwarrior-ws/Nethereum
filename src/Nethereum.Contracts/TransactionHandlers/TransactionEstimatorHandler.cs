@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
 using Nethereum.RPC.TransactionManagers;
 
@@ -15,12 +16,14 @@ namespace Nethereum.Contracts.TransactionHandlers
 
         }
 
-        public Task<HexBigInteger> EstimateGasAsync(string contractAddress, TFunctionMessage functionMessage = null)
+        public Task<HexBigInteger> EstimateGasAsync(string contractAddress,
+                                                    TFunctionMessage functionMessage = null,
+                                                    CancellationToken cancellationToken = default(CancellationToken))
         {
             if (functionMessage == null) functionMessage = new TFunctionMessage();
             SetEncoderContractAddress(contractAddress);
             var callInput = FunctionMessageEncodingService.CreateCallInput(functionMessage);
-            return TransactionManager.EstimateGasAsync(callInput);
+            return TransactionManager.EstimateGasAsync(callInput, cancellationToken);
         }
     }
 #endif

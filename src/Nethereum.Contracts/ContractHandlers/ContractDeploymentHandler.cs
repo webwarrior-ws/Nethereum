@@ -27,9 +27,10 @@ namespace Nethereum.Contracts.ContractHandlers
             _transactionSigner = new DeploymentSigner<TContractDeploymentMessage>(transactionManager);
         }
 
-        public Task<string> SignTransactionAsync(TContractDeploymentMessage contractDeploymentMessage)
+        public Task<string> SignTransactionAsync(TContractDeploymentMessage contractDeploymentMessage,
+                                                 CancellationToken cancellationToken = default(CancellationToken))
         {
-            return _transactionSigner.SignTransactionAsync(contractDeploymentMessage);
+            return _transactionSigner.SignTransactionAsync(contractDeploymentMessage, cancellationToken);
         }
 
         public Task<TransactionReceipt> SendRequestAndWaitForReceiptAsync(
@@ -38,20 +39,26 @@ namespace Nethereum.Contracts.ContractHandlers
             return _receiptPollHandler.SendTransactionAsync(contractDeploymentMessage, tokenSource);
         }
 
-        public Task<string> SendRequestAsync(TContractDeploymentMessage contractDeploymentMessage = null)
+        public Task<string> SendRequestAsync(TContractDeploymentMessage contractDeploymentMessage = null,
+                                             CancellationToken cancellationToken = default(CancellationToken))
         {
-            return _transactionSenderHandler.SendTransactionAsync(contractDeploymentMessage);
+            return _transactionSenderHandler.SendTransactionAsync(contractDeploymentMessage,
+                                                                  cancellationToken);
         }
 
-        public Task<HexBigInteger> EstimateGasAsync(TContractDeploymentMessage contractDeploymentMessage)
+        public Task<HexBigInteger> EstimateGasAsync(TContractDeploymentMessage contractDeploymentMessage,
+                                                    CancellationToken cancellationToken = default(CancellationToken))
         {
-            return _estimatorHandler.EstimateGasAsync(contractDeploymentMessage);
+            return _estimatorHandler.EstimateGasAsync(contractDeploymentMessage,
+                                                      cancellationToken);
         }
 
-        public async Task<TransactionInput> CreateTransactionInputEstimatingGasAsync(TContractDeploymentMessage deploymentMessage = null)
+        public async Task<TransactionInput> CreateTransactionInputEstimatingGasAsync(TContractDeploymentMessage deploymentMessage = null,
+                                                                                     CancellationToken cancellationToken = default(CancellationToken))
         {
             if (deploymentMessage == null) deploymentMessage = new TContractDeploymentMessage();
-            var gasEstimate = await EstimateGasAsync(deploymentMessage).ConfigureAwait(false);
+            var gasEstimate = await EstimateGasAsync(deploymentMessage, cancellationToken)
+                .ConfigureAwait(false);
             deploymentMessage.Gas = gasEstimate;
             return deploymentMessage.CreateTransactionInput();
         }

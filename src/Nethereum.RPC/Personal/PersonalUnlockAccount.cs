@@ -6,6 +6,7 @@ using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.Hex.HexTypes;
 using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth;
+using System.Threading;
 
 namespace Nethereum.RPC.Personal
 {
@@ -31,35 +32,35 @@ namespace Nethereum.RPC.Personal
         /// This is compatible with newer versions of Geth
         /// </summary>
         public Task<bool> SendRequestAsync(string address, string passPhrase, ulong? durationInSeconds,
-            object id = null)
+            object id = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (address == null) throw new ArgumentNullException(nameof(address));
             if (passPhrase == null) throw new ArgumentNullException(nameof(passPhrase));
 
-            return base.SendRequestAsync(id, address.EnsureHexPrefix(), passPhrase, durationInSeconds);
+            return base.SendRequestAsync(id, cancellationToken, address.EnsureHexPrefix(), passPhrase, durationInSeconds);
         }
 
         /// <summary>
         /// This is compatible with older versions of Geth and Parity
         /// </summary>
         public Task<bool> SendRequestAsync(string address, string passPhrase, HexBigInteger durationInSeconds,
-           object id = null)
+           object id = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (address == null) throw new ArgumentNullException(nameof(address));
             if (passPhrase == null) throw new ArgumentNullException(nameof(passPhrase));
 
-            return base.SendRequestAsync(id, address.EnsureHexPrefix(), passPhrase, durationInSeconds);
+            return base.SendRequestAsync(id, cancellationToken, address.EnsureHexPrefix(), passPhrase, durationInSeconds);
         }
 
 #if !DOTNET35
         public async Task<bool> SendRequestAsync(EthCoinBase coinbaseRequest, string passPhrase,
-            object id = null)
+            object id = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (coinbaseRequest == null) throw new ArgumentNullException(nameof(coinbaseRequest));
             if (passPhrase == null) throw new ArgumentNullException(nameof(passPhrase));
             return
                 await
-                    base.SendRequestAsync(id, await coinbaseRequest.SendRequestAsync(), passPhrase)
+                    base.SendRequestAsync(id, cancellationToken, await coinbaseRequest.SendRequestAsync(cancellationToken), passPhrase)
                         .ConfigureAwait(false);
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Nethereum.Contracts.Extensions;
 using Nethereum.Hex.HexTypes;
 using Nethereum.RPC.TransactionManagers;
@@ -28,19 +29,24 @@ namespace Nethereum.Contracts.DeploymentHandlers
             _deploymentEstimatorHandler = deploymentEstimatorHandler;
         }
 
-        public async Task<string> SignTransactionAsync(TContractDeploymentMessage deploymentMessage = null)
+        public async Task<string> SignTransactionAsync(TContractDeploymentMessage deploymentMessage = null,
+                                                       CancellationToken cancellationToken = default(CancellationToken))
         {
             if (deploymentMessage == null) deploymentMessage = new TContractDeploymentMessage();
-            deploymentMessage.Gas = await GetOrEstimateMaximumGasAsync(deploymentMessage).ConfigureAwait(false);
+            deploymentMessage.Gas = await GetOrEstimateMaximumGasAsync(deploymentMessage,
+                                                                       cancellationToken).ConfigureAwait(false);
             var transactionInput = DeploymentMessageEncodingService.CreateTransactionInput(deploymentMessage);
-            return await TransactionManager.SignTransactionAsync(transactionInput).ConfigureAwait(false);
+            return await TransactionManager.SignTransactionAsync(transactionInput,
+                                                                 cancellationToken).ConfigureAwait(false);
         }
 
         protected virtual async Task<HexBigInteger> GetOrEstimateMaximumGasAsync(
-            TContractDeploymentMessage deploymentMessage)
+            TContractDeploymentMessage deploymentMessage,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             return deploymentMessage.GetHexMaximumGas()
-                   ?? await _deploymentEstimatorHandler.EstimateGasAsync(deploymentMessage).ConfigureAwait(false);
+                   ?? await _deploymentEstimatorHandler.EstimateGasAsync(deploymentMessage,
+                                                                         cancellationToken).ConfigureAwait(false);
         }
     }
 #endif

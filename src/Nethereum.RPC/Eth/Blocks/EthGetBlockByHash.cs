@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Nethereum.Hex.HexConvertors.Extensions;
 using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth.DTOs;
+using System.Threading;
 
 namespace Nethereum.RPC.Eth.Blocks
 {
@@ -77,9 +78,11 @@ namespace Nethereum.RPC.Eth.Blocks
         {
         }
 
-        public Task<BlockWithTransactions> SendRequestAsync(string blockHash, object id = null)
+        public Task<BlockWithTransactions> SendRequestAsync(string blockHash,
+                                                            object id = null,
+                                                            CancellationToken cancellationToken = default(CancellationToken))
         {
-            return base.SendRequestAsync(id, blockHash.EnsureHexPrefix(), true);
+            return base.SendRequestAsync(id, cancellationToken, blockHash.EnsureHexPrefix(), true);
         }
 
         public RpcRequest BuildRequest(string blockHash, object id = null)
@@ -160,10 +163,12 @@ namespace Nethereum.RPC.Eth.Blocks
         {
         }
 
-        public Task<BlockWithTransactionHashes> SendRequestAsync(string blockHash, object id = null)
+        public Task<BlockWithTransactionHashes> SendRequestAsync(string blockHash,
+                                                                 object id = null,
+                                                                 CancellationToken cancellationToken = default(CancellationToken))
         {
             if (blockHash == null) throw new ArgumentNullException(nameof(blockHash));
-            return base.SendRequestAsync(id, blockHash.EnsureHexPrefix(), false);
+            return base.SendRequestAsync(id, cancellationToken, blockHash.EnsureHexPrefix(), false);
         }
 
         public RpcRequest BuildRequest(string blockHash, object id = null)

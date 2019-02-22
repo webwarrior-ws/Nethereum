@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
 using JsonRpcSharp.Client;
 using Nethereum.Hex.HexConvertors.Extensions;
+using System.Threading;
 
 namespace Nethereum.RPC.Eth.Uncles
 {
@@ -35,10 +36,12 @@ namespace Nethereum.RPC.Eth.Uncles
         {
         }
 
-        public Task<HexBigInteger> SendRequestAsync(string hash, object id = null)
+        public Task<HexBigInteger> SendRequestAsync(string hash,
+                                                    object id = null,
+                                                    CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hash == null) throw new ArgumentNullException(nameof(hash));
-            return base.SendRequestAsync(id, hash.EnsureHexPrefix());
+            return base.SendRequestAsync(id, cancellationToken, hash.EnsureHexPrefix());
         }
 
         public RpcRequest BuildRequest(string hash, object id = null)

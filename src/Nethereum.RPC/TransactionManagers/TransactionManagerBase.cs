@@ -20,14 +20,16 @@ namespace Nethereum.RPC.TransactionManagers
         public IAccount Account { get; protected set; }
 
 #if !DOTNET35
-        public abstract Task<string> SignTransactionAsync(TransactionInput transaction);
+        public abstract Task<string> SignTransactionAsync(TransactionInput transaction,
+                                                          CancellationToken cancellationToken = default(CancellationToken));
 
-        public Task<string> SendRawTransactionAsync(string signedTransaction)
+        public Task<string> SendRawTransactionAsync(string signedTransaction,
+                                                    CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client == null) throw new NullReferenceException("Client not configured");
             if (string.IsNullOrEmpty(signedTransaction)) throw new ArgumentNullException(nameof(signedTransaction));
             var ethSendRawTransaction = new EthSendRawTransaction(Client);
-            return ethSendRawTransaction.SendRequestAsync(signedTransaction);
+            return ethSendRawTransaction.SendRequestAsync(signedTransaction, null, cancellationToken);
         }
 
         private ITransactionReceiptService _transactionReceiptService;
@@ -48,27 +50,32 @@ namespace Nethereum.RPC.TransactionManagers
             return TransactionReceiptService.SendRequestAndWaitForReceiptAsync(transactionInput, tokenSource);
         }
                
-        public virtual Task<HexBigInteger> EstimateGasAsync(CallInput callInput)
+        public virtual Task<HexBigInteger> EstimateGasAsync(CallInput callInput,
+                                                            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client == null) throw new NullReferenceException("Client not configured");
             if (callInput == null) throw new ArgumentNullException(nameof(callInput));
             var ethEstimateGas = new EthEstimateGas(Client);
-            return ethEstimateGas.SendRequestAsync(callInput);
+            return ethEstimateGas.SendRequestAsync(callInput, null, cancellationToken);
         }
 
-        public abstract Task<string> SendTransactionAsync(TransactionInput transactionInput);
+        public abstract Task<string> SendTransactionAsync(TransactionInput transactionInput,
+                                                          CancellationToken cancellationToken = default(CancellationToken));
         
-        public virtual Task<string> SendTransactionAsync(string from, string to, HexBigInteger amount)
+        public virtual Task<string> SendTransactionAsync(string from, string to, HexBigInteger amount,
+                                                         CancellationToken cancellationToken = default(CancellationToken))
         {  
-            return SendTransactionAsync(new TransactionInput() { From = from, To = to, Value = amount});
+            return SendTransactionAsync(new TransactionInput() { From = from, To = to, Value = amount},
+                                        cancellationToken);
         }
 
-        public async Task<HexBigInteger> GetGasPriceAsync(TransactionInput transactionInput)
+        public async Task<HexBigInteger> GetGasPriceAsync(TransactionInput transactionInput,
+                                                          CancellationToken cancellationToken = default(CancellationToken))
         {
             if (transactionInput.GasPrice != null) return transactionInput.GasPrice;
             if (DefaultGasPrice >= 0) return new HexBigInteger(DefaultGasPrice);
             var ethGetGasPrice = new EthGasPrice(Client);
-            return await ethGetGasPrice.SendRequestAsync().ConfigureAwait(false);
+            return await ethGetGasPrice.SendRequestAsync(cancellationToken).ConfigureAwait(false);
         }
 
         protected void SetDefaultGasPriceAndCostIfNotSet(TransactionInput transactionInput)

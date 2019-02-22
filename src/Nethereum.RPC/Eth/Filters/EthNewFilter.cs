@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
 using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth.DTOs;
+using System.Threading;
 
 namespace Nethereum.RPC.Eth.Filters
 {
@@ -54,10 +55,12 @@ namespace Nethereum.RPC.Eth.Filters
         {
         }
 
-        public Task<HexBigInteger> SendRequestAsync(NewFilterInput newFilterInput, object id = null)
+        public Task<HexBigInteger> SendRequestAsync(NewFilterInput newFilterInput,
+                                                    object id = null,
+                                                    CancellationToken cancellationToken = default(CancellationToken))
         {
             if (newFilterInput == null) throw new ArgumentNullException(nameof(newFilterInput));
-            return base.SendRequestAsync(id, newFilterInput);
+            return base.SendRequestAsync(id, cancellationToken, newFilterInput);
         }
 
         public RpcRequest BuildRequest(NewFilterInput newFilterInput, object id = null)

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using JsonRpcSharp.Client;
 using Nethereum.RPC.Eth.DTOs;
 using Nethereum.RPC.Eth.Transactions;
@@ -25,14 +26,15 @@ namespace Nethereum.Contracts.QueryHandlers
         public Task<string> QueryAsync(
             string contractAddress,
             TFunctionMessage contractFunctionMessage = null,
-            BlockParameter block = null)
+            BlockParameter block = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (contractFunctionMessage == null) contractFunctionMessage = new TFunctionMessage();
             if (block == null) block = DefaultBlockParameter;
             FunctionMessageEncodingService.SetContractAddress(contractAddress);
             EnsureInitialiseAddress();
             var callInput = FunctionMessageEncodingService.CreateCallInput(contractFunctionMessage);
-            return EthCall.SendRequestAsync(callInput, block);
+            return EthCall.SendRequestAsync(callInput, block, cancellationToken);
         }
     }
 #endif

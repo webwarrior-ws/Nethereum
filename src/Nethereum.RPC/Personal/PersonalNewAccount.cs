@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
  
 using JsonRpcSharp.Client;
@@ -20,10 +21,12 @@ namespace Nethereum.RPC.Personal
         {
         }
 
-        public Task<string> SendRequestAsync(string passPhrase, object id = null)
+        public Task<string> SendRequestAsync(string passPhrase,
+                                             object id = null,
+                                             CancellationToken cancellationToken = default(CancellationToken))
         {
             if (passPhrase == null) throw new ArgumentNullException(nameof(passPhrase));
-            return SendRequestAsync(id, passPhrase);
+            return SendRequestAsync(id, cancellationToken, passPhrase);
         }
 
         public RpcRequest BuildRequest(string passPhrase, object id = null)

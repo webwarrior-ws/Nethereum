@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
  
 using JsonRpcSharp.Client;
@@ -47,13 +48,17 @@ namespace Nethereum.RPC.Eth.Mining
             return base.BuildRequest(id, nonce.EnsureHexPrefix(), header.EnsureHexPrefix(), mix.EnsureHexPrefix());
         }
 
-        public Task<bool> SendRequestAsync(string nonce, string header, string mix, object id = null)
+        public Task<bool> SendRequestAsync(string nonce,
+                                           string header,
+                                           string mix,
+                                           object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nonce == null) throw new ArgumentNullException(nameof(nonce));
             if (header == null) throw new ArgumentNullException(nameof(header));
             if (mix == null) throw new ArgumentNullException(nameof(mix));
 
-            return base.SendRequestAsync(id, nonce.EnsureHexPrefix(), header.EnsureHexPrefix(), mix.EnsureHexPrefix() );
+            return base.SendRequestAsync(id, cancellationToken, nonce.EnsureHexPrefix(), header.EnsureHexPrefix(), mix.EnsureHexPrefix() );
         }
     }
 }

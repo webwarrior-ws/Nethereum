@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
  
 using JsonRpcSharp.Client;
@@ -41,17 +42,22 @@ namespace Nethereum.RPC.Eth.Transactions
 
         public BlockParameter DefaultBlock { get; set; }
 
-        public Task<string> SendRequestAsync(CallInput callInput, BlockParameter block, object id = null)
+        public Task<string> SendRequestAsync(CallInput callInput,
+                                             BlockParameter block,
+                                             object id = null,
+                                             CancellationToken cancellationToken = default(CancellationToken))
         {
             if (block == null) return SendRequestAsync(callInput, id);
             if (callInput == null) throw new ArgumentNullException(nameof(callInput));
-            return base.SendRequestAsync(id, callInput, block);
+            return base.SendRequestAsync(id, cancellationToken, callInput, block);
         }
 
-        public Task<string> SendRequestAsync(CallInput callInput, object id = null)
+        public Task<string> SendRequestAsync(CallInput callInput,
+                                             object id = null,
+                                             CancellationToken cancellationToken = default(CancellationToken))
         {
             if (callInput == null) throw new ArgumentNullException(nameof(callInput));
-            return base.SendRequestAsync(id, callInput, DefaultBlock);
+            return base.SendRequestAsync(id, cancellationToken, callInput, DefaultBlock);
         }
 
         public RpcRequest BuildRequest(CallInput callInput, BlockParameter block, object id = null)

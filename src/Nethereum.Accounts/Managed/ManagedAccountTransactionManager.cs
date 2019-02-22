@@ -7,6 +7,7 @@ using Nethereum.RPC.Eth.DTOs;
 using Nethereum.RPC.Personal;
 using Nethereum.RPC.TransactionManagers;
 using Transaction = Nethereum.Signer.Transaction;
+using System.Threading;
 
 namespace Nethereum.Web3.Accounts.Managed
 {
@@ -36,7 +37,8 @@ namespace Nethereum.Web3.Accounts.Managed
             Account = account;
         }
 
-        public async Task<HexBigInteger> GetNonceAsync(TransactionInput transaction)
+        public async Task<HexBigInteger> GetNonceAsync(TransactionInput transaction,
+                                                       CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client == null) throw new NullReferenceException("Client not configured");
             if (transaction == null) throw new ArgumentNullException(nameof(transaction));
@@ -45,13 +47,15 @@ namespace Nethereum.Web3.Accounts.Managed
                 if (Account.NonceService != null)
                 {
                     Account.NonceService.Client = Client;
-                    nonce = await Account.NonceService.GetNextNonceAsync().ConfigureAwait(false);
+                    nonce = await Account.NonceService.GetNextNonceAsync(cancellationToken)
+                        .ConfigureAwait(false);
                 }
             return nonce;
         }
 
 
-        public override async Task<string> SendTransactionAsync(TransactionInput transactionInput)
+        public override async Task<string> SendTransactionAsync(TransactionInput transactionInput,
+                                                                CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client == null) throw new NullReferenceException("Client not configured");
             if (transactionInput == null) throw new ArgumentNullException(nameof(transactionInput));
@@ -63,18 +67,21 @@ namespace Nethereum.Web3.Accounts.Managed
             var nonce = await GetNonceAsync(transactionInput).ConfigureAwait(false);
             if (nonce != null) transactionInput.Nonce = nonce;
             var ethSendTransaction = new PersonalSignAndSendTransaction(Client);
-            return await ethSendTransaction.SendRequestAsync(transactionInput, ((ManagedAccount) Account).Password)
+            return await ethSendTransaction.SendRequestAsync(transactionInput, ((ManagedAccount) Account).Password,
+                                                             null, cancellationToken)
                 .ConfigureAwait(false);
         }
 
-        public override Task<string> SendTransactionAsync(string from, string to, HexBigInteger amount)
+        public override Task<string> SendTransactionAsync(string from, string to, HexBigInteger amount,
+                                                          CancellationToken cancellationToken = default(CancellationToken))
         {
             if (from != Account.Address) throw new Exception("Invalid account used");
             var transactionInput = new TransactionInput(null, to, from, null, null, amount);
-            return SendTransactionAsync(transactionInput);
+            return SendTransactionAsync(transactionInput, cancellationToken);
         }
 
-        public override Task<string> SignTransactionAsync(TransactionInput transaction)
+        public override Task<string> SignTransactionAsync(TransactionInput transaction,
+                                                          CancellationToken cancellationToken = default(CancellationToken))
         {
             throw new InvalidOperationException("Managed accounts cannot sign offline transactions");
         }

@@ -28,7 +28,7 @@
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
     <PackageReference Include="JsonRpcSharp">
-      <Version>0.9.54719</Version>
+      <Version>0.9.54733</Version>
     </PackageReference>
   </ItemGroup>
 

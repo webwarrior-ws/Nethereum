@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
  
 using JsonRpcSharp.Client;
@@ -18,9 +19,12 @@ namespace Nethereum.RPC.Personal
         {
         }
 
-        public Task<string> SendRequestAsync(TransactionInput txn, string password, object id = null)
+        public Task<string> SendRequestAsync(TransactionInput txn,
+                                             string password,
+                                             object id = null,
+                                             CancellationToken cancellationToken = default(CancellationToken))
         {
-            return base.SendRequestAsync(id, txn, password);
+            return base.SendRequestAsync(id, cancellationToken, txn, password);
         }
 
         public RpcRequest BuildRequest(TransactionInput txn, string password, object id = null)

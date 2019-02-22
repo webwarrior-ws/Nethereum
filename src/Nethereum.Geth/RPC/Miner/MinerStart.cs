@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using JsonRpcSharp.Client;
 
@@ -19,15 +20,17 @@ namespace Nethereum.Geth.RPC.Miner
             return base.BuildRequest(id, number);
         }
 
-        public Task<bool> SendRequestAsync(int number, object id = null)
+        public Task<bool> SendRequestAsync(int number, object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
             if (number <= 0) throw new ArgumentOutOfRangeException(nameof(number));
-            return base.SendRequestAsync(id, number);
+            return base.SendRequestAsync(id, cancellationToken, number);
         }
 
-        public Task<bool> SendRequestAsync(object id = null)
+        public Task<bool> SendRequestAsync(object id = null,
+                                           CancellationToken cancellationToken = default(CancellationToken))
         {
-            return base.SendRequestAsync(id, 1);
+            return base.SendRequestAsync(id, cancellationToken, 1);
         }
     }
 }
