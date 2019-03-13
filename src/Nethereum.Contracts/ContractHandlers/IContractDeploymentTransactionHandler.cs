@@ -14,7 +14,7 @@ namespace Nethereum.Contracts.CQS
                                              CancellationToken cancellationToken = default(CancellationToken));
 
         Task<TransactionReceipt> SendRequestAndWaitForReceiptAsync(TContractDeploymentMessage contractDeploymentMessage = null,
-                                                                   CancellationTokenSource tokenSource = null);
+                                                                   CancellationToken cancellationToken = default(CancellationToken));
 
         Task<string> SendRequestAsync(TContractDeploymentMessage contractDeploymentMessage = null,
                                       CancellationToken cancellationToken = default(CancellationToken));

@@ -27,7 +27,7 @@ namespace Nethereum.RPC.TransactionManagers
         Task<string> SignTransactionAsync(TransactionInput transaction,
                                           CancellationToken cancellationToken = default(CancellationToken));
         ITransactionReceiptService TransactionReceiptService { get; set; }
-        Task<TransactionReceipt> SendTransactionAndWaitForReceiptAsync(TransactionInput transactionInput, CancellationTokenSource tokenSource);
+        Task<TransactionReceipt> SendTransactionAndWaitForReceiptAsync(TransactionInput transactionInput, CancellationToken cancellationToken = default(CancellationToken));
 #endif
 
     }

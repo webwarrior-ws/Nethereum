@@ -211,7 +211,7 @@ namespace Nethereum.Contracts
 
 
         public Task<TransactionReceipt> SendTransactionAndWaitForReceiptAsync(TFunctionInput functionInput, string from,
-            CancellationTokenSource receiptRequestCancellationToken = null)
+            CancellationToken receiptRequestCancellationToken = default(CancellationToken))
         {
             return base.SendTransactionAndWaitForReceiptAsync(CreateTransactionInput(functionInput, from),
                 receiptRequestCancellationToken);
@@ -219,7 +219,7 @@ namespace Nethereum.Contracts
 
         public Task<TransactionReceipt> SendTransactionAndWaitForReceiptAsync(TFunctionInput functionInput, string from,
             HexBigInteger gas,
-            HexBigInteger value, CancellationTokenSource receiptRequestCancellationToken = null)
+            HexBigInteger value, CancellationToken receiptRequestCancellationToken = default(CancellationToken))
         {
             return base.SendTransactionAndWaitForReceiptAsync(CreateTransactionInput(functionInput, from, gas, value),
                 receiptRequestCancellationToken);
@@ -227,14 +227,14 @@ namespace Nethereum.Contracts
 
         public Task<TransactionReceipt> SendTransactionAndWaitForReceiptAsync(TFunctionInput functionInput, string from,
             HexBigInteger gas, HexBigInteger gasPrice,
-            HexBigInteger value, CancellationTokenSource receiptRequestCancellationToken = null)
+            HexBigInteger value, CancellationToken receiptRequestCancellationToken = default(CancellationToken))
         {
             return base.SendTransactionAndWaitForReceiptAsync(
                 CreateTransactionInput(functionInput, from, gas, gasPrice, value), receiptRequestCancellationToken);
         }
 
         public Task<TransactionReceipt> SendTransactionAndWaitForReceiptAsync(TFunctionInput functionInput,
-            TransactionInput input, CancellationTokenSource receiptRequestCancellationToken = null)
+            TransactionInput input, CancellationToken receiptRequestCancellationToken = default(CancellationToken))
         {
             var encodedInput = GetData(functionInput);
             input.Data = encodedInput;

@@ -1,4 +1,4 @@
-using System.Numerics;
+﻿using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 using Nethereum.ABI.FunctionEncoding.Attributes;
@@ -39,21 +39,21 @@ namespace Nethereum.Uport
         public static async Task<UportRegistryService> DeployContractAndGetServiceAsync(
             ITransactionReceiptService transactionReceiptService, Web3.Web3 web3,
             string addressFrom, string previousPublishedVersion, HexBigInteger gas = null,
-            HexBigInteger valueAmount = null, CancellationTokenSource cancellationTokenSource = null)
+            HexBigInteger valueAmount = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var contractAddress = await DeployContractAndGetAddressAsync(transactionReceiptService, web3, addressFrom,
-                previousPublishedVersion, gas, valueAmount, cancellationTokenSource);
+                previousPublishedVersion, gas, valueAmount, cancellationToken);
             return new UportRegistryService(web3, contractAddress);
         }
 
         public static async Task<string> DeployContractAndGetAddressAsync(
             ITransactionReceiptService transactionReceiptService, Web3.Web3 web3,
             string addressFrom, string previousPublishedVersion, HexBigInteger gas = null,
-            HexBigInteger valueAmount = null, CancellationTokenSource cancellationTokenSource = null)
+            HexBigInteger valueAmount = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await transactionReceiptService.DeployContractAndGetAddressAsync(() =>
                     DeployContractAsync(web3, addressFrom, previousPublishedVersion, gas, valueAmount),
-                cancellationTokenSource);
+                cancellationToken);
         }
 
         public Function GetFunctionGet()
@@ -120,11 +120,11 @@ namespace Nethereum.Uport
         public Task<TransactionReceipt> SetAsyncAndGetReceipt(string addressFrom, string registrationIdentifier,
             string subject, string value, ITransactionReceiptService transactionReceiptService,
             HexBigInteger gas = null, HexBigInteger valueAmount = null,
-            CancellationTokenSource cancellationTokenSource = null)
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             return transactionReceiptService.SendRequestAndWaitForReceiptAsync(
                 () => SetAsync(addressFrom, registrationIdentifier, subject, value, gas, valueAmount),
-                cancellationTokenSource);
+                cancellationToken);
         }
     }
 

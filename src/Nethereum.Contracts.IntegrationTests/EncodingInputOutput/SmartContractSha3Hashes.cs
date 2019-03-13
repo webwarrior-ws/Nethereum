@@ -1,4 +1,6 @@
-﻿using Nethereum.Hex.HexConvertors.Extensions;
+﻿
+using System.Threading;
+using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.Hex.HexTypes;
 using Nethereum.XUnitEthereumClients;
 using Xunit;
@@ -50,7 +52,7 @@ namespace Nethereum.Contracts.IntegrationTests.EncodingInputOutput
                 @"[{""constant"":false,""inputs"":[{""name"":""_myvalue"",""type"":""string""}],""name"":""sha3Test"",""outputs"":[{""name"":""val"",""type"":""bytes32""}],""type"":""function""},{""constant"":false,""inputs"":[{""name"":""_myHash"",""type"":""bytes32""}],""name"":""storeMyHash"",""outputs"":[],""type"":""function""},{""constant"":true,""inputs"":[],""name"":""myHash"",""outputs"":[{""name"":"""",""type"":""bytes32""}],""type"":""function""}]";
 
             var receipt = await web3.Eth.DeployContract.SendRequestAndWaitForReceiptAsync(contractByteCode,
-                senderAddress, new HexBigInteger(900000), null, null, null);
+                senderAddress, new HexBigInteger(900000), null, null, CancellationToken.None);
 
             //"0x350b79547251fdb18b64ec17cf3783e7d854bd30" (prev deployed contract)
 
@@ -63,7 +65,7 @@ namespace Nethereum.Contracts.IntegrationTests.EncodingInputOutput
             var storeMyHash = contract.GetFunction("storeMyHash");
             var gas = await storeMyHash.EstimateGasAsync(senderAddress, null, null, hash.HexToByteArray());
             var receiptTxn =
-                await storeMyHash.SendTransactionAndWaitForReceiptAsync(senderAddress, gas, null, null,
+                await storeMyHash.SendTransactionAndWaitForReceiptAsync(senderAddress, gas, null, CancellationToken.None,
                     hash.HexToByteArray());
 
             var myHashFuction = contract.GetFunction("myHash");

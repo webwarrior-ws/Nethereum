@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using System.Numerics;
 using Nethereum.Hex.HexTypes;
@@ -16,17 +16,17 @@ namespace SolidityCallAnotherContract.Contracts.TheOther.Service
     public class TheOtherService
     {
     
-        public static Task<TransactionReceipt> DeployContractAndWaitForReceiptAsync(Web3 web3, TheOtherDeployment theOtherDeployment, CancellationTokenSource cancellationTokenSource = null)
+        public static Task<TransactionReceipt> DeployContractAndWaitForReceiptAsync(Web3 web3, TheOtherDeployment theOtherDeployment, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return web3.Eth.GetContractDeploymentHandler<TheOtherDeployment>().SendRequestAndWaitForReceiptAsync(theOtherDeployment, cancellationTokenSource);
+            return web3.Eth.GetContractDeploymentHandler<TheOtherDeployment>().SendRequestAndWaitForReceiptAsync(theOtherDeployment, cancellationToken);
         }
         public static Task<string> DeployContractAsync(Web3 web3, TheOtherDeployment theOtherDeployment)
         {
             return web3.Eth.GetContractDeploymentHandler<TheOtherDeployment>().SendRequestAsync(theOtherDeployment);
         }
-        public static async Task<TheOtherService> DeployContractAndGetServiceAsync(Web3 web3, TheOtherDeployment theOtherDeployment, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task<TheOtherService> DeployContractAndGetServiceAsync(Web3 web3, TheOtherDeployment theOtherDeployment, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var receipt = await DeployContractAndWaitForReceiptAsync(web3, theOtherDeployment, cancellationTokenSource);
+            var receipt = await DeployContractAndWaitForReceiptAsync(web3, theOtherDeployment, cancellationToken);
             return new TheOtherService(web3, receipt.ContractAddress);
         }
     

@@ -1,4 +1,4 @@
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Nethereum.Contracts.ContractHandlers;
 using Nethereum.ENS.FIFSRegistrar.ContractDefinition;
@@ -10,17 +10,17 @@ namespace Nethereum.ENS
     public partial class FIFSRegistrarService
     {
     
-        public static Task<TransactionReceipt> DeployContractAndWaitForReceiptAsync(Nethereum.Web3.Web3 web3, FIFSRegistrarDeployment fIFSRegistrarDeployment, CancellationTokenSource cancellationTokenSource = null)
+        public static Task<TransactionReceipt> DeployContractAndWaitForReceiptAsync(Nethereum.Web3.Web3 web3, FIFSRegistrarDeployment fIFSRegistrarDeployment, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return web3.Eth.GetContractDeploymentHandler<FIFSRegistrarDeployment>().SendRequestAndWaitForReceiptAsync(fIFSRegistrarDeployment, cancellationTokenSource);
+            return web3.Eth.GetContractDeploymentHandler<FIFSRegistrarDeployment>().SendRequestAndWaitForReceiptAsync(fIFSRegistrarDeployment, cancellationToken);
         }
         public static Task<string> DeployContractAsync(Nethereum.Web3.Web3 web3, FIFSRegistrarDeployment fIFSRegistrarDeployment)
         {
             return web3.Eth.GetContractDeploymentHandler<FIFSRegistrarDeployment>().SendRequestAsync(fIFSRegistrarDeployment);
         }
-        public static async Task<FIFSRegistrarService> DeployContractAndGetServiceAsync(Nethereum.Web3.Web3 web3, FIFSRegistrarDeployment fIFSRegistrarDeployment, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task<FIFSRegistrarService> DeployContractAndGetServiceAsync(Nethereum.Web3.Web3 web3, FIFSRegistrarDeployment fIFSRegistrarDeployment, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var receipt = await DeployContractAndWaitForReceiptAsync(web3, fIFSRegistrarDeployment, cancellationTokenSource);
+            var receipt = await DeployContractAndWaitForReceiptAsync(web3, fIFSRegistrarDeployment, cancellationToken);
             return new FIFSRegistrarService(web3, receipt.ContractAddress);
         }
     
@@ -39,7 +39,7 @@ namespace Nethereum.ENS
              return ContractHandler.SendRequestAsync(registerFunction);
         }
 
-        public Task<TransactionReceipt> RegisterRequestAndWaitForReceiptAsync(RegisterFunction registerFunction, CancellationTokenSource cancellationToken = null)
+        public Task<TransactionReceipt> RegisterRequestAndWaitForReceiptAsync(RegisterFunction registerFunction, CancellationToken cancellationToken = default(CancellationToken))
         {
              return ContractHandler.SendRequestAndWaitForReceiptAsync(registerFunction, cancellationToken);
         }
@@ -53,7 +53,7 @@ namespace Nethereum.ENS
              return ContractHandler.SendRequestAsync(registerFunction);
         }
 
-        public Task<TransactionReceipt> RegisterRequestAndWaitForReceiptAsync(byte[] subnode, string owner, CancellationTokenSource cancellationToken = null)
+        public Task<TransactionReceipt> RegisterRequestAndWaitForReceiptAsync(byte[] subnode, string owner, CancellationToken cancellationToken = default(CancellationToken))
         {
             var registerFunction = new RegisterFunction();
                 registerFunction.Subnode = subnode;
