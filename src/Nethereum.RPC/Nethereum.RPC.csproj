@@ -26,7 +26,7 @@
     <None Include="..\..\NethereumKey.snk" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' != 'net35'">
-    <PackageReference Include="JsonRpcSharp" Version="0.9.54733">
+    <PackageReference Include="JsonRpcSharp" Version="0.10.0-date20190924-0104.git-030f3a3">
     </PackageReference>
   </ItemGroup>
 
