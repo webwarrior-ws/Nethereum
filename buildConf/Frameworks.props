@@ -1,24 +1,9 @@
 <Project>
   <PropertyGroup>
-    <TargetNet46>false</TargetNet46>
-    <TargetNetCore>false</TargetNetCore>
-    <TargetNetStandard>false</TargetNetStandard>
-    <DefaultFrameworks>net46;netstandard2.0;netcoreapp2.1</DefaultFrameworks>
-    <DefaultFrameworks Condition=" '$(TargetNet46)' == 'true'">net46</DefaultFrameworks>
-    <DefaultFrameworks Condition=" '$(TargetNetCore)' == 'true'">netcoreapp2.1</DefaultFrameworks>
-    <DefaultFrameworks Condition=" '$(TargetNetStandard)' == 'true'">netstandard2.0</DefaultFrameworks>
-    <HdWalletFrameworks>netstandard2.0;net46;netcoreapp2.1</HdWalletFrameworks>
-    <HdWalletFrameworks Condition=" '$(TargetNet46)' == 'true'">net46;</HdWalletFrameworks>
-    <HdWalletFrameworks Condition=" '$(TargetNetCore)' == 'true'">netcoreapp2.1;</HdWalletFrameworks>
-    <HdWalletFrameworks Condition=" '$(TargetNetStandard)' == 'true'">netstandard2.0;</HdWalletFrameworks>
-    <ExternalSignerFrameworks>netstandard2.0;net46;netcoreapp2.1</ExternalSignerFrameworks>
-    <ExternalSignerFrameworks Condition=" '$(TargetNet46)' == 'true'">net46;</ExternalSignerFrameworks>
-    <ExternalSignerFrameworks Condition=" '$(TargetNetCore)' == 'true'">netcoreapp2.1;</ExternalSignerFrameworks>
-    <ExternalSignerFrameworks Condition=" '$(TargetNetStandard)' == 'true'">netstandard2.0;</ExternalSignerFrameworks>
-    <IpcWebSocketsFrameworks>net46;netstandard2.0;netcoreapp2.1</IpcWebSocketsFrameworks>
-    <IpcWebSocketsFrameworks Condition=" '$(TargetNet46)' == 'true'">net46;</IpcWebSocketsFrameworks>
-    <IpcWebSocketsFrameworks Condition=" '$(TargetNetCore)' == 'true'">netcoreapp2.1;</IpcWebSocketsFrameworks>
-    <IpcWebSocketsFrameworks Condition=" '$(TargetNetStandard)' == 'true'">netstandard2.0;</IpcWebSocketsFrameworks>
+    <DefaultFrameworks>net46;netstandard2.0</DefaultFrameworks>
+    <HdWalletFrameworks>netstandard2.0;net46</HdWalletFrameworks>
+    <ExternalSignerFrameworks>netstandard2.0;net46</ExternalSignerFrameworks>
+    <IpcWebSocketsFrameworks>net46;netstandard2.0</IpcWebSocketsFrameworks>
     <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>
 
