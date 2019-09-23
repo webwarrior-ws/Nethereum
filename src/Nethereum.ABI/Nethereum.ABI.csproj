@@ -6,7 +6,7 @@
     <AssemblyTitle>Nethereum.ABI</AssemblyTitle>
     <Version>$(NethereumVersion)</Version>
     <Authors>Juan Blanco</Authors>
-    <TargetFrameworks>$(DefaultFrameworksUnitySupport)</TargetFrameworks>
+    <TargetFrameworks>$(DefaultFrameworks)</TargetFrameworks>
     <AssemblyName>Nethereum.ABI</AssemblyName>
     <PackageId>Nethereum.ABI</PackageId>
   </PropertyGroup>
@@ -16,11 +16,11 @@
     <ProjectReference Include="..\Nethereum.Util\Nethereum.Util.csproj" />
   </ItemGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet46AOT)' != 'true'">
+  <PropertyGroup>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\NethereumKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet46AOT)' != 'true'">
+  <ItemGroup>
     <None Include="..\..\NethereumKey.snk" />
   </ItemGroup>
 

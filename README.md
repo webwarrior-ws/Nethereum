@@ -29,7 +29,6 @@ The documentation and guides can be found at [Read the docs](https://nethereum.r
 * [Parity](https://www.parity.io/) management API.
 * [Quorum](https://www.jpmorgan.com/global/Quorum) integration.
 * Simplified smart contract interaction for deployment, function calling, transaction and event filtering and decoding of topics.
-* [Unity 3d](https://unity3d.com/) Unity integration.
 * ABI to .Net type encoding and decoding, including attribute based for complex object deserialization.
 * Hd Wallet
 * Transaction, RLP and message signing, verification and recovery of accounts.
@@ -42,7 +41,7 @@ The documentation and guides can be found at [Read the docs](https://nethereum.r
 
 ## Quick installation
 
-Nethereum provides two types of packages. Standalone packages targeting Netstandard 1.1, net451 and where possible net351 to support Unity3d. There is also a Nethereum.Portable library which combines all the packages into a single portable library. As netstandard evolves and is more widely supported, the portable library might be eventually deprecated.
+This fork of Nethereum provides two types of packages: standalone packages targeting Netstandard 2.0 and net46x. There is also a Nethereum.Portable library which combines all the packages into a single portable library. As netstandard evolves and is more widely supported, the portable library might be eventually deprecated.
 
 To install the latest version:
 

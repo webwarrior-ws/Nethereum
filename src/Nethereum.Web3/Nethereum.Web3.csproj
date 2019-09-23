@@ -37,15 +37,15 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet46AOT)' != 'true'">
+  <PropertyGroup>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\NethereumKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet46AOT)' != 'true'">
+  <ItemGroup>
     <None Include="..\..\NethereumKey.snk" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' != 'net35'">
-    <PackageReference Include="JsonRpcSharp" Version="0.10.0-date20190924-0104.git-030f3a3">
+  <ItemGroup>
+    <PackageReference Include="JsonRpcSharp" Version="0.10.0-date20190921-1146.git-244a2f5">
     </PackageReference>
   </ItemGroup>
 

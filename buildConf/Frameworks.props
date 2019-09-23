@@ -1,15 +1,8 @@
 <Project>
   <PropertyGroup>
-    <TargetNet35>false</TargetNet35>
     <TargetNet46>false</TargetNet46>
     <TargetNetCore>false</TargetNetCore>
     <TargetNetStandard>false</TargetNetStandard>
-    <TargetUnityNet46AOT>false</TargetUnityNet46AOT>
-    <DefaultFrameworksUnitySupport Condition=" '$(TargetNet35)' == 'true' ">netstandard2.0;net46;netcoreapp2.1</DefaultFrameworksUnitySupport>
-    <DefaultFrameworksUnitySupport Condition=" '$(TargetNet35)' == 'false' ">netstandard2.0;net46;netcoreapp2.1</DefaultFrameworksUnitySupport>
-    <DefaultFrameworksUnitySupport Condition=" '$(TargetNet46)' == 'true'">net46</DefaultFrameworksUnitySupport>
-    <DefaultFrameworksUnitySupport Condition=" '$(TargetNetCore)'== 'true'">netcoreapp2.1</DefaultFrameworksUnitySupport>
-    <DefaultFrameworksUnitySupport Condition=" '$(TargetNetStandard)'== 'true'">netstandard2.0</DefaultFrameworksUnitySupport>
     <DefaultFrameworks>net46;netstandard2.0;netcoreapp2.1</DefaultFrameworks>
     <DefaultFrameworks Condition=" '$(TargetNet46)' == 'true'">net46</DefaultFrameworks>
     <DefaultFrameworks Condition=" '$(TargetNetCore)' == 'true'">netcoreapp2.1</DefaultFrameworks>
@@ -22,8 +15,6 @@
     <ExternalSignerFrameworks Condition=" '$(TargetNet46)' == 'true'">net46;</ExternalSignerFrameworks>
     <ExternalSignerFrameworks Condition=" '$(TargetNetCore)' == 'true'">netcoreapp2.1;</ExternalSignerFrameworks>
     <ExternalSignerFrameworks Condition=" '$(TargetNetStandard)' == 'true'">netstandard2.0;</ExternalSignerFrameworks>
-    <UnityFrameworks>net46;net35</UnityFrameworks>
-    <UnityFrameworks Condition=" '$(TargetNet46)' == 'true'">net46;</UnityFrameworks>
     <IpcWebSocketsFrameworks>net46;netstandard2.0;netcoreapp2.1</IpcWebSocketsFrameworks>
     <IpcWebSocketsFrameworks Condition=" '$(TargetNet46)' == 'true'">net46;</IpcWebSocketsFrameworks>
     <IpcWebSocketsFrameworks Condition=" '$(TargetNetCore)' == 'true'">netcoreapp2.1;</IpcWebSocketsFrameworks>
@@ -31,23 +22,16 @@
     <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>
 
-   <ItemGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet46AOT)' != 'true' And '$(MSBuildProjectName)' != 'Nethereum.HdWallet'">
+   <ItemGroup Condition=" '$(MSBuildProjectName)' != 'Nethereum.HdWallet'">
     <PackageReference Include="Newtonsoft.Json" Version="[10.0.3,12)" />
   </ItemGroup>
   
-   <ItemGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet46AOT)' != 'true' And '$(MSBuildProjectName)' == 'Nethereum.HdWallet'">
+   <ItemGroup Condition=" '$(MSBuildProjectName)' == 'Nethereum.HdWallet'">
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
   
-  <ItemGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetFramework)' != 'net451' And '$(TargetFramework)' != 'net46'">
+  <ItemGroup Condition=" '$(TargetFramework)' != 'net451' And '$(TargetFramework)' != 'net46'">
     <PackageReference Include="Portable.BouncyCastle" Version="1.8.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Condition="'$(TargetUnityNet46AOT)' == 'true' " Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Newtonsoft.Json.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1' ">

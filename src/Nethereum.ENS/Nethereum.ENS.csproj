@@ -25,11 +25,11 @@
     </PackageReference>
   </ItemGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet46AOT)' != 'true'">
+  <PropertyGroup>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\NethereumKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' != 'net35' And '$(TargetUnityNet46AOT)' != 'true'">
+  <ItemGroup>
     <None Include="..\..\NethereumKey.snk" />
   </ItemGroup>
 
