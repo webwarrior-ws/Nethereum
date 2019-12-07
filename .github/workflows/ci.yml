@@ -10,5 +10,6 @@ jobs:
       run: |
         dotnet build Nethereum.sln -p:Configuration=Release
     - name: Package and upload
+      shell: cmd
       run: |
         nuget.bat ${{ secrets.NUGET_API_KEY }}
