@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), dir.props))\dir.props" />
 
   <PropertyGroup>
@@ -45,7 +45,7 @@
     <None Include="..\..\NethereumKey.snk" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="JsonRpcSharp" Version="0.10.0-date20190924-0104.git-030f3a3">
+    <PackageReference Include="JsonRpcSharp" Version="0.10.0-date20191207-0557.git-3383656">
     </PackageReference>
   </ItemGroup>
 
