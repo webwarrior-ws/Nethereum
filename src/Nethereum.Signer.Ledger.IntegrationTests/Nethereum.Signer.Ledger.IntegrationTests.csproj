@@ -9,7 +9,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="[10.0.3,12)" />
     <PackageReference Include="Ledger.Net" Version="2.0.0" />
     <PackageReference Include="Common.Logging" Version="3.4.1" />
-    <PackageReference Include="JsonRpcSharp" Version="0.10.0-date20191211-1221.git-469146b" />
+    <PackageReference Include="JsonRpcSharp" Version="0.90.0-date20200125-1141.git-db16aef" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
