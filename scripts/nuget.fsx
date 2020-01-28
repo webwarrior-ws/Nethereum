@@ -37,7 +37,7 @@ let nugetExe = Path.Combine(rootDir.FullName, "nuget.exe") |> FileInfo
 let nuspecFile = Path.Combine(rootDir.FullName, sprintf "%s.nuspec" packageName)
                  |> FileInfo
 
-let nugetVersion = GetIdealNugetVersion "0.10"
+let nugetVersion = GetIdealNugetVersion "0.91"
 let nugetPackCmd =
     {
         Command = nugetExe.FullName
