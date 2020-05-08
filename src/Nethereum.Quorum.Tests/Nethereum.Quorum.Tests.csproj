@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JsonRpcSharp" Version="0.91.0-date20200128-1134.git-9cb1f0c" />
+    <PackageReference Include="JsonRpcSharp" Version="0.91.0-date20200508-0436.git-69b4b96" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
