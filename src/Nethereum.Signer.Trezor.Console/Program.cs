@@ -77,7 +77,7 @@ namespace Nethereum.Signer.Trezor.Console
 
                 var account = new ExternalAccount(signer);
                 await account.InitialiseAsync();
-                account.InitialiseDefaultTransactionManager(new RpcClient(new Uri("http://localhost:8545")));
+                account.InitialiseDefaultTransactionManager(new HttpClient(new Uri("http://localhost:8545")));
                 var tx = new TransactionInput()
                 {
                     Nonce = new HexBigInteger(10),
@@ -90,7 +90,7 @@ namespace Nethereum.Signer.Trezor.Console
                 var signature = await account.TransactionManager.SignTransactionAsync(tx);
                 
                 var accountNethereum = new Account("0x2e14c29aaecd1b7c681154d41f50c4bb8b6e4299a431960ed9e860e39cae6d29");
-                accountNethereum.TransactionManager.Client = new RpcClient(new Uri("http://localhost:8545"));
+                accountNethereum.TransactionManager.Client = new HttpClient(new Uri("http://localhost:8545"));
                 var signatureNethereum = await accountNethereum.TransactionManager.SignTransactionAsync(tx);
                 System.Console.WriteLine("Trezor: " + signature);
                 System.Console.WriteLine("Nethereum: " + signatureNethereum);
@@ -122,7 +122,7 @@ namespace Nethereum.Signer.Trezor.Console
 
                 var account = new ExternalAccount(signer);
                 await account.InitialiseAsync();
-                var rpcClient = new RpcClient(new Uri("http://localhost:8545"));
+                var rpcClient = new HttpClient(new Uri("http://localhost:8545"));
                 account.InitialiseDefaultTransactionManager(rpcClient);
                 var web3 = new Web3.Web3(account, rpcClient);
                 var tx = new TransferFunction()

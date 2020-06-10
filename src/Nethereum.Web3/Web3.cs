@@ -32,7 +32,7 @@ namespace Nethereum.Web3
 
         public Web3(string url = @"http://localhost:8545/", ILog log = null, AuthenticationHeaderValue authenticationHeader = null)
         {
-            IntialiseDefaultRpcClient(url, log, authenticationHeader);
+            IntialiseDefaultHttpClient(url, log, authenticationHeader);
             InitialiseInnerServices();
             IntialiseDefaultGasAndGasPrice();
         }
@@ -101,9 +101,9 @@ namespace Nethereum.Web3
             Personal = new PersonalApiService(Client);
         }
 
-        private void IntialiseDefaultRpcClient(string url, ILog log, AuthenticationHeaderValue authenticationHeader)
+        private void IntialiseDefaultHttpClient(string url, ILog log, AuthenticationHeaderValue authenticationHeader)
         {
-            Client = new RpcClient(new Uri(url), authenticationHeader, null, null, log);
+            Client = new HttpClient(new Uri(url), authenticationHeader, null, null, log);
         }
     }
 }

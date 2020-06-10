@@ -12,7 +12,7 @@ namespace Nethereum.RPC.Tests.Testers
     {
         public EthGetUncleByBlockHashAndIndexTester():base()
         {
-              this.Client = new RpcClient(new Uri(Settings.GetLiveRpcUrl()));  
+              this.Client = new HttpClient(new Uri(Settings.GetLiveRpcUrl()));  
         }
 
         [Fact]

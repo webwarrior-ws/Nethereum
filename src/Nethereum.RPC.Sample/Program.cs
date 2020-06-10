@@ -12,7 +12,7 @@ namespace Nethereum.RPC.Sample
     {
         public static void Main(string[] args)
         {
-            var client = new RpcClient(new Uri("http://localhost:8545/"));
+            var client = new HttpClient(new Uri("http://localhost:8545/"));
 
             var testerType = typeof (IRPCRequestTester);
             var assembly = testerType.GetTypeInfo().Assembly;

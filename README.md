@@ -41,7 +41,7 @@ The documentation and guides can be found at [Read the docs](https://nethereum.r
 
 ## Quick installation
 
-This fork of Nethereum provides two types of packages: standalone packages targeting Netstandard 2.0 and net46x. There is also a Nethereum.Portable library which combines all the packages into a single portable library. As netstandard evolves and is more widely supported, the portable library might be eventually deprecated.
+This fork of Nethereum provides only assemblies targeting NetStandard 2.0. There is also a Nethereum.Portable library which combines all the packages into a single portable library. As netstandard evolves and is more widely supported, the portable library might be eventually deprecated.
 
 To install the latest version:
 

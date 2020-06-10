@@ -84,7 +84,7 @@ namespace Nethereum.Ledger.IntegrationTests
             transfer.Nonce = 1;
             transfer.GasPrice = 100;
             transfer.Gas = 1000;
-            var rpcClient = new RpcClient(new Uri("http://localhost:8545"));
+            var rpcClient = new HttpClient(new Uri("http://localhost:8545"));
             var transactionInput = transfer.CreateTransactionInput("0x12890d2cce102216644c59daE5baed380d84830c");
 
             var account = new Account(privateKey, Chain.MainNet);

@@ -1,9 +1,9 @@
 <Project>
   <PropertyGroup>
-    <DefaultFrameworks>net46;netstandard2.0</DefaultFrameworks>
-    <HdWalletFrameworks>netstandard2.0;net46</HdWalletFrameworks>
-    <ExternalSignerFrameworks>netstandard2.0;net46</ExternalSignerFrameworks>
-    <IpcWebSocketsFrameworks>net46;netstandard2.0</IpcWebSocketsFrameworks>
+    <DefaultFrameworks>netstandard2.0</DefaultFrameworks>
+    <HdWalletFrameworks>netstandard2.0</HdWalletFrameworks>
+    <ExternalSignerFrameworks>netstandard2.0</ExternalSignerFrameworks>
+    <IpcWebSocketsFrameworks>netstandard2.0</IpcWebSocketsFrameworks>
     <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>
 
@@ -15,20 +15,13 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
   
-  <ItemGroup Condition=" '$(TargetFramework)' != 'net451' And '$(TargetFramework)' != 'net46'">
+  <ItemGroup>
     <PackageReference Include="Portable.BouncyCastle" Version="1.8.2" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1' ">
     <DefineConstants>$(DefineConstants);PCL</DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' Or '$(TargetFramework)' == 'net452' Or '$(TargetFramework)' == 'net46'">
-    <Reference Include="System" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="Microsoft.CSharp" />
-    <PackageReference Include="BouncyCastle" Version="1.8.2" />
-  </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
     <Reference Include="netstandard" />

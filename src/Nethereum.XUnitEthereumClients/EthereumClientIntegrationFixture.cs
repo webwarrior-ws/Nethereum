@@ -30,7 +30,7 @@ namespace Nethereum.XUnitEthereumClients
     {
         public static IClient GetClient()
         {
-            return new RpcClient(new Uri("http://localhost:8545"));
+            return new HttpClient(new Uri("http://localhost:8545"));
         }
     }
 

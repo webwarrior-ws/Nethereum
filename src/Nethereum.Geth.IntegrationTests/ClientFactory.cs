@@ -9,7 +9,7 @@ namespace Nethereum.RPC.Tests
         public static IClient GetClient(TestSettings settings)
         {
             var url = settings.GetRPCUrl();
-            return new RpcClient(new Uri(url));
+            return new HttpClient(new Uri(url));
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Nethereum.ENS.IntegrationTests
            // var client = new IpcClient("geth.ipc");
             //return client;
 //#else      
-          return new RpcClient(new Uri("http://localhost:8545/"));
+          return new HttpClient(new Uri("http://localhost:8545/"));
 //#endif
            
         }
