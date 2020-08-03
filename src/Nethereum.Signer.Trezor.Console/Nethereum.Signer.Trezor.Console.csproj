@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Trezor.Net" Version="2.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="[10.0.3,12)" />
-    <PackageReference Include="JsonRpcSharp" Version="0.92.0-date20200610-0657.git-425436f" />
+    <PackageReference Include="JsonRpcSharp" Version="0.93.0-date20200803-1106.git-5cb1461" />
   </ItemGroup>
 
   <ItemGroup>
