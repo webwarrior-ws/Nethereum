@@ -19,6 +19,8 @@ namespace Nethereum.Accounts.IntegrationTests
     [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
     public class ABIStructsTests
     {
+        private static TimeSpan defaultTimeOutForTests = TimeSpan.FromSeconds(30.0);
+
         /*
      pragma solidity "0.4.25";
 pragma experimental ABIEncoderV2;
@@ -253,7 +255,7 @@ contract TestV2
 
             var address = "0x12890d2cce102216644c59daE5baed380d84830c";
             var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
-            var web3 = new Web3.Web3(new Account(privateKey));
+            var web3 = new Web3.Web3(new Account(privateKey), defaultTimeOutForTests);
             var deploymentReceipt = await web3.Eth.GetContractDeploymentHandler<TestContractDeployment>()
                 .SendRequestAndWaitForReceiptAsync();
             

@@ -28,9 +28,11 @@ namespace Nethereum.XUnitEthereumClients
 
     public class ClientFactory
     {
+        private static TimeSpan defaultTimeOutForTests = TimeSpan.FromSeconds(30.0);
+
         public static IClient GetClient()
         {
-            return new HttpClient(new Uri("http://localhost:8545"));
+            return new HttpClient(new Uri("http://localhost:8545"), defaultTimeOutForTests);
         }
     }
 

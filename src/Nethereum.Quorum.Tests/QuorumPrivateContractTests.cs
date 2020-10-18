@@ -61,10 +61,12 @@ namespace Nethereum.Quorum.Tests
             //private.set(4,{from:eth.coinbase,privateFor:["ROAZBWtSacxXQrOe3FGAqJDyJjFePR5ce4TSIzmJ0Bc="]});
         }
 
+        private static TimeSpan defaultTimeOutForTests = TimeSpan.FromSeconds(30.0);
+
         private static async Task<int> GetValue(string abi, string address, string nodeUrl)
         {
             //normal geth is ok
-            var web3 = new Web3.Web3(nodeUrl);
+            var web3 = new Web3.Web3(defaultTimeOutForTests, nodeUrl);
             var contract = web3.Eth.GetContract(abi, address);
             var functionGet = contract.GetFunction("get");
             return await functionGet.CallAsync<int>();

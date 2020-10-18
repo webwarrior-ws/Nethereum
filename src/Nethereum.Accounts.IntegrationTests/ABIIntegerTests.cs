@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Common.Logging;
 using Common.Logging.Simple;
 using Nethereum.ABI;
+using System;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts;
 using Nethereum.Contracts.CQS;
@@ -16,7 +17,7 @@ namespace Nethereum.Accounts.IntegrationTests
     [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
     public class ABIIntegerTests
     {
-
+        private static TimeSpan defaultTimeOutForTests = TimeSpan.FromSeconds(30.0);
         //Smart contract for testing
         /*
         contract Test{
@@ -304,7 +305,7 @@ namespace Nethereum.Accounts.IntegrationTests
         public Web3.Web3 GetWeb3()
         {
             var web3 = new Web3.Web3(_ethereumClientIntegrationFixture.GetWeb3().TransactionManager.Account,
-                "http://localhost:8545", LogManager.GetLogger<ILog>());
+                defaultTimeOutForTests, "http://localhost:8545", LogManager.GetLogger<ILog>());
             return web3;
         }
        

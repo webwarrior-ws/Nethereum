@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Nethereum.Hex.HexTypes;
@@ -126,6 +126,8 @@ namespace Nethereum.Accounts.IntegrationTests
             Assert.Equal(49, result);
         }
 
+        private static TimeSpan defaultTimeOutForTests = TimeSpan.FromSeconds(30.0);
+
         [Fact]
         public async Task ShouldBeAbleToTransferBetweenAccountsUsingManagedAccount()
         {
@@ -134,7 +136,7 @@ namespace Nethereum.Accounts.IntegrationTests
             var password = "password";
             // A managed account is an account which is maintained by the client (Geth / Parity)
             var account = new ManagedAccount(senderAddress, password);
-            var web3 = new Web3.Web3(account);
+            var web3 = new Web3.Web3(account, defaultTimeOutForTests);
 
             //The transaction receipt polling service is a simple utility service to poll for receipts until mined
             var transactionPolling = (TransactionReceiptPollingService)web3.TransactionManager.TransactionReceiptService;

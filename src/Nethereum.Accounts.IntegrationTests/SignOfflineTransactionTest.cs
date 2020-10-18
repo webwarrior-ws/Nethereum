@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts;
 using Nethereum.Contracts.CQS;
@@ -21,11 +22,13 @@ namespace Nethereum.Accounts.IntegrationTests
             public int TokenAmount { get; set; }
         }
 
+        private static TimeSpan defaultTimeOutForTests = TimeSpan.FromSeconds(30.0);
+
         [Fact]
         public async Task ShouldSignOfflineTransaction()
         {
             var account = new Account("0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7");
-            var web3 = new Web3.Web3(account);
+            var web3 = new Web3.Web3(account, defaultTimeOutForTests);
             var transfer = new TransferFunction()
             {
                 To = "0x12890d2cce102216644c59daE5baed380d84830c",

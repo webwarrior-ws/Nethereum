@@ -1,3 +1,5 @@
+using System;
+
 using Nethereum.ENS.ENSRegistry.ContractDefinition;
 using Nethereum.ENS.FIFSRegistrar.ContractDefinition;
 using Nethereum.ENS.PublicResolver.ContractDefinition;
@@ -15,11 +17,12 @@ namespace Nethereum.ENS.IntegrationTests.ENS
 
     public class ENSMainNetTest
     {
+        private static TimeSpan defaultTimeOutForTests = TimeSpan.FromSeconds(30.0);
 
         [Fact]
         public async void ShouldResolveNameFromMainnet()
         {
-            var web3 = new Web3.Web3("https://mainnet.infura.io");
+            var web3 = new Web3.Web3(defaultTimeOutForTests, "https://mainnet.infura.io");
 
             var fullNameNode = new EnsUtil().GetNameHash("nickjohnson.eth");
 

@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using System;
+using System.Net.Http.Headers;
 using Common.Logging;
 using JsonRpcSharp.Client;
 using Nethereum.RPC.Accounts;
@@ -7,11 +8,14 @@ namespace Nethereum.Geth
 {
     public class Web3Geth : Web3.Web3
     {
+        private static TimeSpan defaultTimeOut = TimeSpan.FromSeconds(30.0);
+
         public Web3Geth(IClient client) : base(client)
         {
         }
 
-        public Web3Geth(string url = @"http://localhost:8545/", ILog log = null, AuthenticationHeaderValue authenticationHeader = null) : base(url, log, authenticationHeader)
+        public Web3Geth(string url = @"http://localhost:8545/", ILog log = null, AuthenticationHeaderValue authenticationHeader = null)
+            : base(defaultTimeOut, url, log, authenticationHeader)
         {
         }
 
@@ -19,7 +23,8 @@ namespace Nethereum.Geth
         {
         }
 
-        public Web3Geth(IAccount account, string url = @"http://localhost:8545/", ILog log = null, AuthenticationHeaderValue authenticationHeader = null) : base(account, url, log, authenticationHeader)
+        public Web3Geth(IAccount account, string url = @"http://localhost:8545/", ILog log = null, AuthenticationHeaderValue authenticationHeader = null)
+            : base(account, defaultTimeOut, url, log, authenticationHeader)
         {
         }
 

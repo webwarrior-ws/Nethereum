@@ -67,6 +67,7 @@ namespace Nethereum.Signer.Trezor.Console
             }
         }
 
+        private static TimeSpan defaultTimeOut = TimeSpan.FromSeconds(30.0);
 
         public static async Task TestTransactionSigning()
         {
@@ -77,7 +78,7 @@ namespace Nethereum.Signer.Trezor.Console
 
                 var account = new ExternalAccount(signer);
                 await account.InitialiseAsync();
-                account.InitialiseDefaultTransactionManager(new HttpClient(new Uri("http://localhost:8545")));
+                account.InitialiseDefaultTransactionManager(new HttpClient(new Uri("http://localhost:8545"), defaultTimeOut));
                 var tx = new TransactionInput()
                 {
                     Nonce = new HexBigInteger(10),
@@ -90,7 +91,7 @@ namespace Nethereum.Signer.Trezor.Console
                 var signature = await account.TransactionManager.SignTransactionAsync(tx);
                 
                 var accountNethereum = new Account("0x2e14c29aaecd1b7c681154d41f50c4bb8b6e4299a431960ed9e860e39cae6d29");
-                accountNethereum.TransactionManager.Client = new HttpClient(new Uri("http://localhost:8545"));
+                accountNethereum.TransactionManager.Client = new HttpClient(new Uri("http://localhost:8545"), defaultTimeOut);
                 var signatureNethereum = await accountNethereum.TransactionManager.SignTransactionAsync(tx);
                 System.Console.WriteLine("Trezor: " + signature);
                 System.Console.WriteLine("Nethereum: " + signatureNethereum);
@@ -122,7 +123,7 @@ namespace Nethereum.Signer.Trezor.Console
 
                 var account = new ExternalAccount(signer);
                 await account.InitialiseAsync();
-                var rpcClient = new HttpClient(new Uri("http://localhost:8545"));
+                var rpcClient = new HttpClient(new Uri("http://localhost:8545"), defaultTimeOut);
                 account.InitialiseDefaultTransactionManager(rpcClient);
                 var web3 = new Web3.Web3(account, rpcClient);
                 var tx = new TransferFunction()
@@ -137,7 +138,7 @@ namespace Nethereum.Signer.Trezor.Console
 
                 var signature = await web3.Eth.GetContractTransactionHandler<TransferFunction>().SignTransactionAsync("0x6810e776880c02933d47db1b9fc05908e5386b96", tx);
                 
-                var web32 = new Web3.Web3(new Account("0x2e14c29aaecd1b7c681154d41f50c4bb8b6e4299a431960ed9e860e39cae6d29"));
+                var web32 = new Web3.Web3(new Account("0x2e14c29aaecd1b7c681154d41f50c4bb8b6e4299a431960ed9e860e39cae6d29"), defaultTimeOut);
                 var signatureNethereum = await web32.Eth.GetContractTransactionHandler<TransferFunction>()
                     .SignTransactionAsync("0x6810e776880c02933d47db1b9fc05908e5386b96", tx);
                 

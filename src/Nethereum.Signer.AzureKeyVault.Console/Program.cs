@@ -29,6 +29,7 @@ namespace Nethereum.Signer.AzureKeyVault.Console
 
     class Program
     {
+        private static TimeSpan defaultTimeOut = TimeSpan.FromSeconds(30.0);
         private static string APP_ID = "a73d5252-12f0-4b3e-80a2-8c13870bbcab";
         private static string APP_PASSWORD = "P3RpF4Ux2KHX9aoMAk4tUJtn8A5bAECCo/OmnwyeIW8=";
         private static string URI = "https://juanakv.vault.azure.net/keys/nethereumec/7ed70afdbf7d43bda5a8090515b154d2";
@@ -53,7 +54,7 @@ namespace Nethereum.Signer.AzureKeyVault.Console
             transfer.GasPrice = 100;
             transfer.Gas = 1000;
 
-            var rpcClient = new HttpClient(new Uri("http://localhost:8545"));
+            var rpcClient = new HttpClient(new Uri("http://localhost:8545"), defaultTimeOut);
             var transactionInput = transfer.CreateTransactionInput("0x12890d2cce102216644c59daE5baed380d84830c");
 
             var externalAccount = new ExternalAccount(signer, 1);

@@ -24,7 +24,7 @@
         <dependencies>
             <group targetFramework="netstandard2.0">
                 <dependency id="Portable.BouncyCastle" version="1.8.5.2" exclude="Build,Analyzers" />
-                <dependency id="JsonRpcSharp" version="0.93.0-date20200803-1106.git-5cb1461" exclude="Build,Analyzers" />
+                <dependency id="JsonRpcSharp" version="0.94.0--date20201018-1119.git-05d4006" exclude="Build,Analyzers" />
             </group>
         </dependencies>
     </metadata>

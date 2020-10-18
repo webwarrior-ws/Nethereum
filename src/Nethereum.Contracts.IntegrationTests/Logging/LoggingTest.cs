@@ -21,6 +21,8 @@ namespace Nethereum.Contracts.IntegrationTests.Logging
             _ethereumClientIntegrationFixture = ethereumClientIntegrationFixture;
         }
 
+        private static TimeSpan defaultTimeOutForTests = TimeSpan.FromSeconds(30.0);
+
         [Fact]
         public async void TestLogging()
         {
@@ -37,7 +39,8 @@ namespace Nethereum.Contracts.IntegrationTests.Logging
 
                 var senderAddress = AccountFactory.Address;
                 var web3 = new Web3.Web3(_ethereumClientIntegrationFixture.GetWeb3().TransactionManager.Account,
-                    new HttpClient(new Uri("http://localhost:8545"), null, null, null, LogManager.GetLogger<ILog>()));
+                    new HttpClient(new Uri("http://localhost:8545"), defaultTimeOutForTests,
+                                   null, null, null, LogManager.GetLogger<ILog>()));
 
                 ////deploy the contract, including abi and a paramter of 7. 
                 //var transactionHash = await web3.Eth.DeployContract.SendRequestAsync(abi, contractByteCode, senderAddress,

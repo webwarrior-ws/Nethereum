@@ -7,10 +7,12 @@ namespace Nethereum.RPC.UnitTests.InterceptorTests
 {
     public class OverridingInterceptorTest
     {
+        private static TimeSpan defaultTimeOutForTests = TimeSpan.FromSeconds(30.0);
+
         [Fact]
         public async void ShouldInterceptNoParamsRequest()
         {
-            var client = new HttpClient(new Uri("http://localhost:8545/"));
+            var client = new HttpClient(new Uri("http://localhost:8545/"), defaultTimeOutForTests);
       
             client.OverridingRequestInterceptor = new OverridingInterceptorMock();
             var ethAccounts = new EthAccounts(client);
@@ -22,7 +24,7 @@ namespace Nethereum.RPC.UnitTests.InterceptorTests
         [Fact]
         public async void ShouldInterceptParamsRequest()
         {
-            var client = new HttpClient(new Uri("http://localhost:8545/"));
+            var client = new HttpClient(new Uri("http://localhost:8545/"), defaultTimeOutForTests);
 
             client.OverridingRequestInterceptor = new OverridingInterceptorMock();
             var ethGetCode = new EthGetCode(client);

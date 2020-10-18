@@ -12,12 +12,15 @@ namespace Nethereum.Quorum
 {
     public class Web3Quorum:Web3.Web3
     {
+        private static TimeSpan defaultTimeOut = TimeSpan.FromSeconds(30.0);
+
         public Web3Quorum(IClient client):base(client)
         {
            
         }
 
-        public Web3Quorum(string url = @"http://localhost:8545/", ILog log = null, AuthenticationHeaderValue authenticationHeader = null) : base(url, log, authenticationHeader)
+        public Web3Quorum(string url = @"http://localhost:8545/", ILog log = null, AuthenticationHeaderValue authenticationHeader = null)
+            : base(defaultTimeOut, url, log, authenticationHeader)
         {
 
         }

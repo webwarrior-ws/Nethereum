@@ -74,7 +74,9 @@ namespace Nethereum.Ledger.IntegrationTests
 
             await Test(addressFrom, privateKey, true);
         }
-        
+
+        private static TimeSpan defaultTimeOutForTests = TimeSpan.FromSeconds(30.0);
+
         public async Task Test(string addressFrom, string privateKey, bool legacy)
         {
             var transfer = new TransferFunction();
@@ -84,7 +86,7 @@ namespace Nethereum.Ledger.IntegrationTests
             transfer.Nonce = 1;
             transfer.GasPrice = 100;
             transfer.Gas = 1000;
-            var rpcClient = new HttpClient(new Uri("http://localhost:8545"));
+            var rpcClient = new HttpClient(new Uri("http://localhost:8545"), defaultTimeOutForTests);
             var transactionInput = transfer.CreateTransactionInput("0x12890d2cce102216644c59daE5baed380d84830c");
 
             var account = new Account(privateKey, Chain.MainNet);

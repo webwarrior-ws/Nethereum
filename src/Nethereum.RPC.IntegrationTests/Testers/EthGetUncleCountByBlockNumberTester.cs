@@ -12,7 +12,7 @@ namespace Nethereum.RPC.Tests.Testers
     {
         public EthGetUncleCountByBlockNumberTester()
         {
-            this.Client = new HttpClient(new Uri(Settings.GetLiveRpcUrl()));
+            this.Client = new HttpClient(new Uri(Settings.GetLiveRpcUrl()), ClientFactory.DefaultTimeOutForTests);
         }
 
         [Fact]

@@ -19,6 +19,9 @@ namespace Nethereum.Signer.IntegrationTests
         }
 
 
+        private static TimeSpan defaultTimeOutForTests = TimeSpan.FromSeconds(30.0);
+
+
         [Fact]
         public async Task ShouldSendSignTransaction()
         {
@@ -32,7 +35,7 @@ namespace Nethereum.Signer.IntegrationTests
             var privateKey = AccountFactory.PrivateKey;
             var senderAddress = AccountFactory.Address;
 
-            var web3 = new Web3.Web3(new Account(privateKey, 444444444500));
+            var web3 = new Web3.Web3(new Account(privateKey, 444444444500), defaultTimeOutForTests);
 
             var receipt = await
                 web3.Eth.DeployContract.SendRequestAndWaitForReceiptAsync(abi, contractByteCode, senderAddress,

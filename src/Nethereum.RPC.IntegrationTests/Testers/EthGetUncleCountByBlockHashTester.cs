@@ -14,7 +14,7 @@ namespace Nethereum.RPC.Tests.Testers
 
         public EthGetUncleCountByBlockHashTester():base()
         {
-            this.Client = new HttpClient(new Uri(Settings.GetLiveRpcUrl()));
+            this.Client = new HttpClient(new Uri(Settings.GetLiveRpcUrl()), ClientFactory.DefaultTimeOutForTests);
         }
 
         [Fact]
