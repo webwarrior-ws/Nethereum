@@ -30,14 +30,14 @@ namespace Nethereum.Web3
             TransactionManager.Client = Client;
         }
 
-        public Web3(TimeSpan connTimeout, string url = @"http://localhost:8545/", ILog log = null, AuthenticationHeaderValue authenticationHeader = null)
+        public Web3(TimeSpan connTimeout, string url = @"http://localhost:8545/", ILog log = null)
         {
-            IntialiseDefaultHttpClient(url, connTimeout, log, authenticationHeader);
+            IntialiseDefaultHttpClient(url, connTimeout, log);
             InitialiseInnerServices();
             IntialiseDefaultGasAndGasPrice();
         }
 
-        public Web3(IAccount account, TimeSpan connTimeout, string url = @"http://localhost:8545/", ILog log = null, AuthenticationHeaderValue authenticationHeader = null) : this(connTimeout, url, log, authenticationHeader)
+        public Web3(IAccount account, TimeSpan connTimeout, string url = @"http://localhost:8545/", ILog log = null) : this(connTimeout, url, log)
         {
             TransactionManager = account.TransactionManager;
             TransactionManager.Client = Client;
@@ -101,9 +101,9 @@ namespace Nethereum.Web3
             Personal = new PersonalApiService(Client);
         }
 
-        private void IntialiseDefaultHttpClient(string url, TimeSpan connTimeout, ILog log, AuthenticationHeaderValue authenticationHeader)
+        private void IntialiseDefaultHttpClient(string url, TimeSpan connTimeout, ILog log)
         {
-            Client = new HttpClient(new Uri(url), connTimeout, authenticationHeader, null, null, log);
+            Client = new HttpClient(new Uri(url), connTimeout, null, null, null, log);
         }
     }
 }
