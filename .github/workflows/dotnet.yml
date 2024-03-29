@@ -22,3 +22,56 @@ jobs:
       run: |
         cd src
         & ".\nugetDevBuild.bat"
+
+  push:
+    needs: build
+    runs-on: ubuntu-22.04
+    env:
+      BASE_VERSION: 4.20.0
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Add dependencies
+      run: |
+        dotnet new classlib --name Nethereum --framework netstandard2.0
+        cd Nethereum
+        dotnet add package --version ${{env.BASE_VERSION}} Nethereum.ABI
+        dotnet add package --version ${{env.BASE_VERSION}} Nethereum.Accounts
+        dotnet add package --version ${{env.BASE_VERSION}} Nethereum.Contracts
+        dotnet add package --version ${{env.BASE_VERSION}} Nethereum.Hex
+        dotnet add package --version ${{env.BASE_VERSION}} Nethereum.KeyStore
+        dotnet add package --version ${{env.BASE_VERSION}} Nethereum.RLP
+        dotnet add package --version ${{env.BASE_VERSION}} Nethereum.RPC
+        dotnet add package --version ${{env.BASE_VERSION}} Nethereum.Signer
+        dotnet add package --version ${{env.BASE_VERSION}} Nethereum.StandardTokenEIP20
+        dotnet add package --version ${{env.BASE_VERSION}} Nethereum.Util
+        dotnet add package --version ${{env.BASE_VERSION}} Nethereum.Web3
+        rm Class1.cs
+
+    - name: Pack
+      run: |
+        cd Nethereum
+
+        # TODO: use Fsdk like FSharpLint does: https://github.com/fsprojects/FSharpLint/blob/master/nugetPreRelease.fsx
+        VERSION="${{env.BASE_VERSION}}"
+
+        dotnet pack \
+          --configuration Release \
+          --output ../dist \
+          --property:IncludeBuildOutput=false \
+          --property:IncludeContentInPack=false \
+          --property:TargetFrameworks=netstandard2.0 \
+          --property:Version=$VERSION
+
+# disabled for now, comes from https://github.com/Mersho/Nethereum/commits/NethMetapackage
+#    - name: Push
+#      run: |
+#        cd dist
+#        dotnet nuget push *.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
