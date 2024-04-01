@@ -59,8 +59,7 @@ jobs:
       run: |
         cd Nethereum
 
-        # TODO: use Fsdk like FSharpLint does: https://github.com/fsprojects/FSharpLint/blob/master/nugetPreRelease.fsx
-        VERSION="${{env.BASE_VERSION}}"
+        VERSION="$(dotnet fsi ../nugetPreRelease.fsx $BASE_VERSION)"
 
         dotnet pack \
           --configuration Release \
