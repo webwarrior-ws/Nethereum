@@ -70,6 +70,9 @@ jobs:
           --property:Version=$VERSION
     
     - name: Push
+      if: github.event_name == 'push' && github.ref == 'refs/heads/upstream'
       run: |
         cd dist
-        dotnet nuget push *.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+        if [ -n "${{secrets.NUGET_API_KEY}}" ]; then
+          dotnet nuget push *.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+        fi
